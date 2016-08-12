@@ -1,15 +1,22 @@
 (ns app-project.core
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
-
-(defn foobar [req]
-  (str "foobar")
-  )
-
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [app-project.handlers :as handlers]
+            ))
 
 (defroutes app-routes
-           (GET "/" [] foobar)
+
+           ;; REST API Routes
+           (context "/api" []
+                    (GET "/" [] handlers/foobar)
+                    )
+
+           ;; Route to serve a static index.html file
+           (GET "/" [] handlers/serveIndex)
+
+           ;; Default Routes
+           (route/resources "/")
            (route/not-found "Not Found"))
 
 (def app
