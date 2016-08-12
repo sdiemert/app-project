@@ -1,21 +1,17 @@
 (ns app-project.core
-  (:require [ring.adapter.jetty :as jetty :refer :all])
-  )
+  (:require [compojure.core :refer :all]
+            [compojure.route :as route]
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
-(defn handler [request]
-
-  (println "binbar")
-  ;;(println request)
-
-  {
-   :status  200
-   :headers {"Context-type" "text/html"}
-   :body    "Hello World!"
-   }
+(defn foobar [req]
+  (str "foobar")
   )
 
 
-(defn -main []
-  (jetty/run-jetty handler {:port 4000})
-  )
+(defroutes app-routes
+           (GET "/" [] foobar)
+           (route/not-found "Not Found"))
+
+(def app
+  (wrap-defaults app-routes site-defaults))
 
