@@ -9,7 +9,8 @@
 
            ;; REST API Routes
            (context "/api" []
-                    (GET "/" [] handlers/foobar)
+                    (GET "/foobar" [] handlers/foobar)
+                    (GET "/doAction" [] handlers/doAction)
                     )
 
            ;; Route to serve a static index.html file
@@ -17,7 +18,9 @@
 
            ;; Default Routes
            (route/resources "/")
-           (route/not-found "Not Found"))
+           (route/not-found "Not Found")
+
+ )
 
 (def app
   (wrap-defaults app-routes site-defaults))
