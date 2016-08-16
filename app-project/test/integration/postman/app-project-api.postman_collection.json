@@ -1,0 +1,34 @@
+{
+	"variables": [],
+	"info": {
+		"name": "app-project-api",
+		"_postman_id": "a42e61b0-4c86-02d8-c659-68e209e954e7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - Default Route",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:3000/api",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"board\":[\n        [1,1,1,1,1],\n        [1,1,1,2,0],\n        [0,2,0,2,0],\n        [2,1,1,1,1],\n        [2,0,1,1,0]\n    ],\n    \"size\":5,\n    \"last\": { \"x\":2,\"y\":3, \"pass\" : false, \"c\" : 2}\n    } "
+				},
+				"description": "Request to default /api/ route. "
+			},
+			"response": []
+		}
+	]
+}
