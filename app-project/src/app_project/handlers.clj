@@ -16,4 +16,19 @@
   (if (db/doAction) (resp/content-type (resp/response "success") "text/plain"))
   )
 
+(defn auth [name pass] (db/auth name pass))
+
+(defn make-user [req]
+  (let [
+        username (get (req :body) "username")
+        pass (get (req :body) "password")
+        ]
+    (if (db/make-user username pass)
+      (resp/status (resp/content-type (resp/response "success") "text/plain") 200)
+      (resp/status (resp/content-type (resp/response "failure") "text/plain") 409)
+      )
+    )
+
+  )
+
 (db/connect)

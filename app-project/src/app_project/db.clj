@@ -8,3 +8,14 @@
 (defn doAction []
   (grape/attempt rules/GTSystem (grape/apl 'doAction!))
   )
+
+(defn auth [user pass]
+  (grape/attempt rules/GTSystem (grape/apl 'authenticate? user pass))
+  )
+
+(defn make-user [user pass]
+  (if (not (grape/attempt rules/GTSystem (grape/apl 'user-exists? user)))
+       (grape/attempt rules/GTSystem (grape/apl 'make-user! user pass))
+       false
+    )
+  )

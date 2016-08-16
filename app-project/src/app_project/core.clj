@@ -5,6 +5,8 @@
             [app-project.handlers :as handlers]
             [ring.middleware.basic-authentication :refer [wrap-basic-authentication]]
             [ring.middleware.logger :as logger]
+            [ring.middleware.json :refer [wrap-json-body]]
+
             )
   )
 
@@ -13,7 +15,7 @@
            ;; REST API Routes
            (context "/api" []
                     (GET "/" [] handlers/default)
-                    (GET "/doAction" [] handlers/doAction)
+                    (POST "/user" [] handlers/make-user)
                     )
 
            ;; Route to serve a static index.html file
@@ -25,22 +27,11 @@
 
  )
 
-(defn authenticated? [name pass]
-  (and (= name "foo")
-       (= pass "bar")))
-
-(defn custom-middleware [handler]
-    (fn [req]
-      (handler req)
-      )
-  )
-
 ;; Add in secure-defaults for SSL later.
 (def app (-> app-routes
-             (custom-middleware)
              (logger/wrap-with-logger)
-             (wrap-basic-authentication authenticated?)
-             (wrap-defaults site-defaults)
+             (wrap-basic-authentication handlers/auth)
+             (wrap-json-body)
              (wrap-defaults api-defaults)
              )
   )

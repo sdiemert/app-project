@@ -40,7 +40,7 @@ Routes for authenticating users.
 Routes for managing user accounts. 
 
 * **GET `/api/user`** - lists users in the system, responds with a list of current users and associated meta-data. 
-* **POST `/api/user/<name>`** - makes a new user in the system, expects JSON payload with new user information.
+* **POST `/api/user`** - makes a new user in the system, expects JSON payload with new user information.
 * **DELETE `/api/user/<name>`** - deletes the user record (but not any responses they have provided). 
 * **GET `/api/user/<name>`** - gets detailed meta-data for the specific user, includes responses to questions. 
 
