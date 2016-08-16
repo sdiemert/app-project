@@ -9,7 +9,7 @@
 
            ;; REST API Routes
            (context "/api" []
-                    (GET "/foobar" [] handlers/foobar)
+                    (GET "/" [] handlers/default)
                     (GET "/doAction" [] handlers/doAction)
                     )
 

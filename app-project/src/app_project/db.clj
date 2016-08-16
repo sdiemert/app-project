@@ -1,11 +1,10 @@
  (ns app-project.db
-   (:require [grape.core :refer :all]))
+   (:require [app-project.db-rules :as rules]
+             [grape.core :as grape]
+             ))
 
-(def GTSystem (gts 'app {}))
-
-(def GTSystem (rule 'doAction! []
-{:create (pattern (node 'n1 {:label "AppNode"}))} GTSystem))
+(defn connect [] (rules/initalizeGTS 'app))
 
 (defn doAction []
-  (attempt GTSystem (apl 'doAction!))
+  (grape/attempt rules/GTSystem (grape/apl 'doAction!))
   )

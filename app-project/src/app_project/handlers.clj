@@ -8,10 +8,12 @@
   (resp/content-type (resp/resource-response "index.html" {:root "public"}) "text/html")
   )
 
-(defn foobar [resp]
-  (str "foobar!")
+(defn default [resp]
+  (str "APP API Success Response")
   )
 
 (defn doAction [resp]
   (if (db/doAction) (resp/content-type (resp/response "success") "text/plain"))
   )
+
+(db/connect)
