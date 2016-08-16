@@ -8,6 +8,12 @@
                  [ring/ring-defaults "0.2.1"]
                  [environ "1.0.2"]
                  [grape/grape "0.1.0-SNAPSHOT-standalone"]
+                 [ring-basic-authentication "1.0.5"]
+                 [ring.middleware.logger "0.5.0"]
+                 [log4j/log4j "1.2.17" :exclusions [javax.mail/mail
+                                                    javax.jms/jms
+                                                    com.sun.jmdk/jmxtools
+                                                    com.sun.jmx/jmxri]]
                  ]
   :plugins [[lein-ring "0.9.7"] [lein-environ "1.0.2"]]
   :ring {:handler app-project.core/app}
