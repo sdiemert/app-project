@@ -12,14 +12,20 @@
   (str "APP API Success Response")
   )
 
-(defn auth [name pass] (db/auth name pass))
+(defn auth
+  ([name pass] (db/auth name pass))
+  )
 
 (defn make-user [req]
   (let [
         username (get (req :body) "username")
         pass (get (req :body) "password")
+        role (case (get (req :body) "role")
+               "admin" "admin"
+               "user"
+               )
         ]
-    (if (db/make-user username pass)
+    (if (db/make-user username pass role)
       (resp/status (resp/content-type (resp/response "success") "text/plain") 200)
       (resp/status (resp/content-type (resp/response "failure") "text/plain") 409)
       )

@@ -13,9 +13,13 @@
   (grape/attempt rules/GTSystem (grape/apl 'authenticate? user pass))
   )
 
-(defn make-user [user pass]
+(defn is-role [user role]
+  (grape/attempt rules/GTSystem (grape/apl 'is-role? user role))
+  )
+
+(defn make-user [user pass role]
   (if (not (grape/attempt rules/GTSystem (grape/apl 'user-exists? user)))
-       (grape/attempt rules/GTSystem (grape/apl 'make-user! user pass))
+       (grape/attempt rules/GTSystem (grape/apl 'make-user! user pass role))
        false
     )
   )
