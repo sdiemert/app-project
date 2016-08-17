@@ -12,8 +12,22 @@
   (str "APP API Success Response")
   )
 
-(defn auth
-  ([name pass] (db/auth name pass))
+(defn auth [name pass]
+  (let [
+        result (db/auth name pass)
+        _ (println (str "user-auth, result: " result))
+        ]
+    (if (not result) nil result)
+    )
+  )
+
+(defn admin-auth [name pass]
+  (let [
+        result (and (db/auth name pass) (db/is-role name "admin"))
+        _ (println (str "admin-auth(" name "), result: " result))
+        ]
+    (if (not result) nil result)
+    )
   )
 
 (defn make-user [req]
