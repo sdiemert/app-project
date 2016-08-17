@@ -52,5 +52,33 @@
            )
 
      )
+
+   (def GTSystem
+     (rule 'delete-user! ['user]
+           {:read (pattern
+                      (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                      (node 'n2 {:asserts {:kind "'password'"}})
+                      (edge 'e1 {:src 'n1 :tar 'n2 :label "password"})
+                    )
+            :delete ['n1 'n2 'e1]
+            }
+           GTSystem)
+     )
+
+   (def GTSystem
+     (rule 'update-password! ['user 'old 'new]
+           {:read (pattern
+                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                    (node 'n2 {:asserts {:kind "'password'" :pass "'&old'"}})
+                    (edge 'e1 {:src 'n1 :tar 'n2 :label "password"})
+                    )
+            :create  (pattern
+                       (node 'n3 {:asserts {:kind "'password'" :pass "'&new'"}})
+                       (edge 'e2 {:src 'n1 :tar 'n3 :label "password"})
+                       )
+            :delete ['n2]
+            }
+           GTSystem)
+     )
   )
 )

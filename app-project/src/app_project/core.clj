@@ -16,6 +16,8 @@
            (context "/api" []
                     (GET "/" [] handlers/default)
                     (POST "/user" [] handlers/make-user)
+                    (DELETE "/user/:user-id" [] handlers/remove-user)
+                    (POST "/user/:user-id/password" [] handlers/update-password)
                     )
 
            ;; Route to serve a static index.html file

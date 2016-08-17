@@ -19,3 +19,11 @@
        false
     )
   )
+
+(defn delete-user [user]
+  (grape/attempt rules/GTSystem (grape/apl 'delete-user! user))
+  )
+
+(defn update-password [user newP oldP]
+  (grape/attempt rules/GTSystem (grape/apl 'update-password! user oldP newP))
+  )
