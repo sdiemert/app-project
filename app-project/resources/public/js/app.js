@@ -4,7 +4,7 @@
  * Main Angular app entry point.
  */
 
-var app = angular.module("app", ['ui.router']);
+var app = angular.module("app", ['ui.router', 'base64']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
@@ -30,11 +30,12 @@ app.config(function($stateProvider, $urlRouterProvider){
     })
 });
 
-app.service("apiService", apiService);
+app.service("apiService", ["$http", "$base64", apiService]);
 
 app.controller("mainController", ["$scope", "$rootScope", "$state","apiService", mainController]);
 app.controller("landingController", ["$scope", "apiService", landingController]);
 app.controller("consentController", ["$scope", "$rootScope", "$state","apiService", consentController]);
+app.controller("tutorialController", ["$scope", "$rootScope", "$state","apiService", tutorialController]);
 
 app.run(function($rootScope, $state, $location){
 

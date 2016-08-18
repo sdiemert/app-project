@@ -1,3 +1,5 @@
-function tutorialController ($scope, $rootScope, $state){
+function tutorialController ($scope, $rootScope, $state, apiService){
+
+    
 
 }

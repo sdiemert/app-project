@@ -38,7 +38,9 @@
             :create (pattern
                       (node 'n1 {:asserts {:kind "'user'":name "'&user'" :role "'&role'"}})
                       (node 'n2 {:asserts {:kind "'password'" :pass"'&pass'"}})
+                      (node 'n3 {:asserts {:kind "'consent'" :value "'null'"}})
                       (edge 'e1 {:src 'n1 :tar 'n2 :label "password"})
+                      (edge 'e2 {:src 'n1 :tar 'n3 :label "consent"})
                     )
             }
            GTSystem
@@ -80,6 +82,22 @@
                        (edge 'e2 {:src 'n1 :tar 'n3 :label "password"})
                        )
             :delete ['n2]
+            }
+           GTSystem)
+     )
+
+   (def GTSystem
+     (rule 'update-consent! ['user 'consent]
+           {:read (pattern
+                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                    (node 'n2 {:asserts {:kind "'consent'"}})
+                    (edge 'e1 {:src 'n1 :tar 'n2 :label "consent"})
+                    )
+            :create  (pattern
+                       (node 'n3 {:asserts {:kind "'consent'" :value "'&consent'"}})
+                       (edge 'e2 {:src 'n1 :tar 'n3 :label "consent"})
+                       )
+            :delete ['e1 'n2]
             }
            GTSystem)
      )

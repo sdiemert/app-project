@@ -2,7 +2,16 @@
  * Created by sdiemert on 2016-08-18.
  */
 
-function apiService($http){
+function apiService($http, $base64){
+
+    var makeAuth = function(user, pass){
+
+        var val = "Basic "+$base64.encode(user+":"+pass);
+
+        console.log(val);
+
+        return val;
+    };
 
     /**
      * Authenticates the user, checks that username and password are valid.
@@ -48,5 +57,30 @@ function apiService($http){
             
         });
     };
+
+    this.sendConsent = function(user, pass, accept, cb){
+
+        $http({
+            method : "POST",
+            url : "/api/consent",
+            headers : {
+                "Content-Type" : "application/json",
+                "Authorization" : makeAuth(user, pass)
+            },
+            data : {
+                "username" : user,
+                "consent" : accept
+            }
+        }).then(function success(resp){
+
+            cb(null);
+
+        }, function error(resp){
+
+            cb("error");
+
+        });
+
+    }
 
 }

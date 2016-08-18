@@ -117,4 +117,20 @@
   )
 )
 
+(defn consent [req]
+  (let [
+        name (get (req :body) "username")
+        agree (get (req :body) "consent")
+        ]
+    (if (or (nil? name) (nil? agree))
+      (resp/status (resp/content-type (resp/response "expected body with: { username : XXXX, consent : XXXX}") "text/plain") 400)
+
+      (if (db/consent name agree)
+        (resp/status (resp/content-type (resp/response "success") "text/plain") 200)
+        (resp/status (resp/content-type (resp/response "not completed") "text/plain") 500)
+        )
+      )
+    )
+  )
+
 (db/connect)

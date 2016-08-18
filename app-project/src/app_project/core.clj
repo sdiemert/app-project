@@ -16,6 +16,7 @@
 
 (defroutes user-routes
            (GET "/" [] handlers/default)
+           (POST "/consent" [] handlers/consent)
            )
 
 (defroutes admin-routes

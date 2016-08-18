@@ -62,3 +62,7 @@
       )
     )
   )
+
+(defn consent [user val]
+  (grape/attempt rules/GTSystem (grape/apl 'update-consent! user (str val)))
+  )
