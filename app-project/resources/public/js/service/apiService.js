@@ -4,13 +4,16 @@
 
 function apiService($http, $base64){
 
+    /**
+     * Returns the string required for basic authorization 
+     * to be included in an Authorization HTTP header.
+     *
+     * @param user {string}
+     * @param pass {string}
+     * @returns {string} base64 encoded string.
+     */
     var makeAuth = function(user, pass){
-
-        var val = "Basic "+$base64.encode(user+":"+pass);
-
-        console.log(val);
-
-        return val;
+        return "Basic "+$base64.encode(user+":"+pass);
     };
 
     /**
@@ -22,9 +25,7 @@ function apiService($http, $base64){
      * @param cb {function}
      */
     this.auth = function(user, pass, cb){
-
-        console.log("attempting auth: "+user+","+pass);
-
+        
         $http({
             method : "POST",
             url : "/api/auth",
@@ -58,6 +59,15 @@ function apiService($http, $base64){
         });
     };
 
+    /**
+     * Makes a request to /api/consent to register whether or not the
+     * designated user consents to the study.
+     *
+     * @param user
+     * @param pass
+     * @param accept
+     * @param cb
+     */
     this.sendConsent = function(user, pass, accept, cb){
 
         $http({
@@ -72,11 +82,8 @@ function apiService($http, $base64){
                 "consent" : accept
             }
         }).then(function success(resp){
-
             cb(null);
-
         }, function error(resp){
-
             cb("error");
 
         });
