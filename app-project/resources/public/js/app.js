@@ -9,13 +9,13 @@ var app = angular.module("app", ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider){
 
     // For any unmatched url, send to /route1
-    $urlRouterProvider.otherwise("/route1");
+    $urlRouterProvider.otherwise("/");
 
     $stateProvider
-        .state('route1', {
-            url: "/route1",
-            templateUrl: "views/route1.html",
-            controller:"route1Controller"
+        .state('landing', {
+            url: "/",
+            templateUrl: "views/landing.html",
+            controller:"landingController"
 
         })
         .state('route2', {
@@ -26,6 +26,6 @@ app.config(function($stateProvider, $urlRouterProvider){
 });
 
 app.controller("mainController", ["$scope", mainController]);
-app.controller("route1Controller", ["$scope", route1Controller]);
+app.controller("landingController", ["$scope", landingController]);
 app.controller("route2Controller", ["$scope", route2Controller]);
 

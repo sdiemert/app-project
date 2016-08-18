@@ -2,7 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>APP - Adherence Persistence Project</title>
 
     <!-- CSS -->
     <link href="css/normalize.css" rel="stylesheet"/>
@@ -12,14 +12,23 @@
 </head>
 <body ng-controller="mainController">
 
-    <h1>INDEX</h1>
+    <div class="container">
 
-    <ul class="nav">
-        <li><a ui-sref="route1">Route 1</a></li>
-        <li><a ui-sref="route2">Route 2</a></li>
-    </ul>
+        <div class="row">
+            <div class="twelve columns">
+                <h3>Adherence Persistence Project</h3>
+            </div>
+        </div>
 
-    <div class="well" ui-view></div>
+        <hr class="divider">
+
+        <div class="" ui-view>
+
+
+        </div>
+
+    </div>
+
 
 
 
@@ -29,10 +38,8 @@
     <script src="js/angular.min.js"></script>
     <script src="js/angular-ui-router.min.js"></script>
 
-
-
     <!-- Angular Local Scripts -->
-    <script src="js/controller/route1Controller.js"></script>
+    <script src="js/controller/landingController.js"></script>
     <script src="js/controller/route2Controller.js"></script>
     <script src="js/controller/mainController.js"></script>
     <script src="js/app.js"></script>
