@@ -16,6 +16,7 @@
                                                     com.sun.jmx/jmxri]]
                  [ring/ring-json "0.4.0"]
                  [com.cemerick/friend "0.2.3"]
+                 [clojurewerkz/neocons "3.1.0"]
                  ]
   :plugins [[lein-ring "0.9.7"] [lein-environ "1.0.2"]]
   :ring {:handler app-project.core/app}

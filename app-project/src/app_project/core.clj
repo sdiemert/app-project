@@ -6,7 +6,7 @@
             [app-project.middleware :as middleware]
             [ring.middleware.basic-authentication :as auth]
             [ring.middleware.logger :as logger]
-            [ring.middleware.json :refer [wrap-json-body]]
+            [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
             )
   )
 
@@ -18,6 +18,8 @@
            (POST    "/user"                   [] handlers/make-user)
            (DELETE  "/user/:user-id"          [] handlers/remove-user)
            (POST    "/user/:user-id/password" [] handlers/update-password)
+           (GET     "/user"                   [] handlers/fetch-users)
+           (GET     "/user/:user-id"          [] handlers/fetch-user)
            )
 
 
@@ -43,6 +45,7 @@
                )
              (logger/wrap-with-logger)
              (wrap-json-body)
+             (wrap-json-response)
              (wrap-defaults api-defaults)
              )
           )

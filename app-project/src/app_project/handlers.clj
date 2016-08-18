@@ -74,4 +74,31 @@
     )
   )
 
+(defn fetch-users [req]
+  (let [
+        user-data (db/fetch-users)
+        _ (println (str "user-data: " user-data) )
+        ]
+
+    (if (nil? user-data)
+      (resp/status (resp/content-type (resp/response "not found") "text/plain") 200)
+      (resp/status (resp/content-type (resp/response user-data) "application/json") 200)
+      )
+    )
+  )
+
+(defn fetch-user [req]
+  (let [
+        name ((req :params) :user-id)
+        user-data (db/fetch-user name)
+        ; _ (println (str "user-data: " user-data) )
+     ]
+
+    (if (nil? user-data)
+      (resp/status (resp/content-type (resp/response "not found") "text/plain") 200)
+      (resp/status (resp/content-type (resp/response user-data) "application/json") 200)
+      )
+  )
+)
+
 (db/connect)
