@@ -32,21 +32,20 @@
     )
   )
 
-(defn auth-user [req]
+(defn auth-user-http [req]
+  "Authenticates a study user based on an http request (not an administrator)"
   (let [
         name (get (req :body) "username")
         pass (get (req :body) "password")
-        _ (println (str "Authenticating: " name "," pass))
      ]
     (if (or (nil? name) (nil? pass))
       (resp/status (resp/content-type (resp/response "expected POST with JSON body like: {username:XXXX, password:XXXX}") "text/plain") 400)
-      (if (db/auth name pass)
+      (if (and (db/auth name pass) (db/is-role name "user"))
         (resp/status (resp/content-type (resp/response "success") "text/plain") 200)
         (resp/status (resp/content-type (resp/response "failure") "text/plain") 401)
         )
       )
       )
-
   )
 
 (defn make-user [req]

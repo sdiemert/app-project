@@ -2,7 +2,7 @@
  * Created by sdiemert on 2016-08-17.
  */
 
- function mainController ($scope, $state, apiService){
+ function mainController ($scope, $rootScope, $state, apiService){
 
     $scope.login = function(){
         
@@ -13,9 +13,16 @@
 
             if(!err){
 
-                $state.go("route2");
+                $rootScope.username = username;
+                $rootScope.password = password;
+                $rootScope.authorized = true;
+
+                $state.go("consent");
 
             }else{
+
+                $rootScope.authorized = false;
+
                 switch(err){
                     case "AUTH_FAILED":
                         $scope.showAuthFailed();

@@ -11,7 +11,7 @@
   )
 
 (defroutes public-api-routes
-           (POST "/auth" [] handlers/auth-user)
+           (POST "/auth" [] handlers/auth-user-http)
            )
 
 (defroutes user-routes

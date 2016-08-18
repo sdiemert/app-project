@@ -39,14 +39,14 @@ function apiService($http){
             console.log(resp);
 
             if(resp.status === 400){
-                cb("BAD_REQUEST");
+                cb("BAD_REQUEST", null);
             }else if(resp.status === 401){
-                cb("AUTH_FAILED");
+                cb("AUTH_FAILED", null);
             }else{
-                cb("ERROR");
+                cb("ERROR", null);
             }
             
         });
-    }
+    };
 
 }
