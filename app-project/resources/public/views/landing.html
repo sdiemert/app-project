@@ -42,8 +42,8 @@
         <div class="row">
             <div class='twelve columns'>
 
-                <form id="login-form">
-                    <div clas="row">
+                <form id="login-form" style="margin-bottom:0px;">
+                    <div class="row">
                         <div class="twelve columns">
                             <input class="u-full-width"
                                    type="text"
@@ -67,5 +67,30 @@
                 </form>
             </div>
         </div>
+
+        <div class="row" style="margin-bottom:10px;">
+            <div class="twelve columns">
+                <div id='login-auth-failed' class="well warning" style="display:none;">
+                    <span>Invalid username/password combination. Please try again.</span>
+                </div>
+
+                <div id='login-auth-error' class="well error" style="display:none;">
+                    <span>Opps! Something went wrong - unable to authenticate.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="twelve columns">
+                <button id='login-button'
+                        class="u-pull-right button-primary"
+                        ng-click="login();">
+                        Login
+                </button>
+            </div>
+        </div>
+
+    </div>
+
     </div>
 </div>

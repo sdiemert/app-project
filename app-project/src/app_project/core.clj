@@ -10,6 +10,10 @@
             )
   )
 
+(defroutes public-api-routes
+           (POST "/auth" [] handlers/auth-user)
+           )
+
 (defroutes user-routes
            (GET "/" [] handlers/default)
            )
@@ -36,6 +40,7 @@
 
 (def app (-> (routes
                (context "/api" []
+                        public-api-routes
                         (-> user-routes (wrap-routes auth/wrap-basic-authentication handlers/auth))
                         (context "/admin" []
                           (-> admin-routes (wrap-routes auth/wrap-basic-authentication handlers/admin-auth))

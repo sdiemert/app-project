@@ -25,7 +25,9 @@ app.config(function($stateProvider, $urlRouterProvider){
         })
 });
 
-app.controller("mainController", ["$scope", mainController]);
+app.service("apiService", apiService);
+
+app.controller("mainController", ["$scope", "$state","apiService", mainController]);
 app.controller("landingController", ["$scope", landingController]);
 app.controller("route2Controller", ["$scope", route2Controller]);
 

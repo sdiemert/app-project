@@ -1,5 +1,17 @@
 .well {
-    border:1px solid grey;
+    border:1px solid #ababab;
     border-radius: 5px;
     background-color: #e5e5e5;
+    padding:10px;
+    margin:5px;
+}
+
+.warning {
+    border:1px solid #ffd67c;
+    background-color: #ffee8c;
+}
+
+.error {
+    border:1px solid #ffbfba;
+    background-color: #ffdde2;
 }

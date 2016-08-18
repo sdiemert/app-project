@@ -32,6 +32,23 @@
     )
   )
 
+(defn auth-user [req]
+  (let [
+        name (get (req :body) "username")
+        pass (get (req :body) "password")
+        _ (println (str "Authenticating: " name "," pass))
+     ]
+    (if (or (nil? name) (nil? pass))
+      (resp/status (resp/content-type (resp/response "expected POST with JSON body like: {username:XXXX, password:XXXX}") "text/plain") 400)
+      (if (db/auth name pass)
+        (resp/status (resp/content-type (resp/response "success") "text/plain") 200)
+        (resp/status (resp/content-type (resp/response "failure") "text/plain") 401)
+        )
+      )
+      )
+
+  )
+
 (defn make-user [req]
   (let [
         username (get (req :body) "username")
