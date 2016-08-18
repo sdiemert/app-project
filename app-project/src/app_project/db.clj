@@ -50,9 +50,9 @@
 (defn fetch-users []
   (let [
         q (str "MATCH (n {kind:'user'}) RETURN n;")
-        _ (println q)
+        ;_ (println q)
         res (cy/tquery grape/conn q)
-        _ (println res)
+        ;_ (println res)
         ]
     (if (> (count res) 0)
       (map
