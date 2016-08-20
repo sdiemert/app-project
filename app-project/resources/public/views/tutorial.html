@@ -1,8 +1,29 @@
 <div class="row">
     <div class="twelve columns">
 
-        <h4>Study Tutorial</h4>
+        <div class="" ng-controller="svgController">
+            <h4>Study Tutorial</h4>
+            <p>
+                The following is a practice question to familiarize you with the user interface for this study.
+                Subsequent study questions will use a similar format.
+            </p>
 
+            <p>
+                The timeline below represents a hypothetical patient medication taking behavior.
+                The axis represents time, shown in hours since the start of the prescription.
+                Points in time at which the patient consumed their medication are shown as dots.
+            </p>
+
+            <p>
+                Your task is to indicate when the patient may take the next dose of medication.
+                You do this by indicating a range of permissible administration times.
+            </p>
+
+            <p style="font-style: italic">
+                Adjust the interval bars to indicate that third dose should be taken between 60 and 70 hours.
+            </p>
+            <svg id="svg" style="width:800px;height:300px;"></svg>
+        </div>
 
     </div>
 </div>

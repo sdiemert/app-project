@@ -36,7 +36,10 @@ app.controller("mainController", ["$scope", "$rootScope", "$state","apiService",
 app.controller("landingController", ["$scope", "apiService", landingController]);
 app.controller("consentController", ["$scope", "$rootScope", "$state","apiService", consentController]);
 app.controller("tutorialController", ["$scope", "$rootScope", "$state","apiService", tutorialController]);
+app.controller("svgController", ["$scope", "$rootScope", "$state", svgController]);
 
+/*
+// TODO: UNCOMMENT ME - frustrating to have in dev mode.
 app.run(function($rootScope, $state, $location){
 
     $rootScope.$on("$stateChangeStart", function(event, toState, params, fromState){
@@ -53,4 +56,5 @@ app.run(function($rootScope, $state, $location){
     });
 
 });
+*/
 
