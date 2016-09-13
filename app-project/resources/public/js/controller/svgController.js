@@ -26,7 +26,7 @@ function svgController($scope, $rootScope, $state){
         events.push(new Event(24.50, "1000 mg"));
         events.push(new Event(30.40, "10 mg"));
 
-        var timeline = new Timeline(72, events);
+        var timeline = new SliderTimeline(72, events);
 
         $scope.timelineFactory.renderTimeline(timeline);
 

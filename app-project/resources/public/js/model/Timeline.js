@@ -10,3 +10,12 @@ class Timeline{
     }
 
 }
+
+class SliderTimeline extends Timeline{
+    constructor(hours, events){
+        super(hours, events);
+
+        this.left = 0;
+        this.right = hours; 
+    }
+}

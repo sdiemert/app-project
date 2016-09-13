@@ -90,6 +90,10 @@ class SVGTimelineFactory extends SVGFactory{
             +(mins < 10 ? "0"+mins : mins);
     }
 
+    hourToPixelPosition(t, size, offset, hours){
+        return (t/hours)* size + offset;
+    }
+
 
     /**
      * Based on event time, draw the event indicator on the SVG object.
@@ -103,7 +107,7 @@ class SVGTimelineFactory extends SVGFactory{
         var LABEL_W = 50;
         var LABEL_H = 33;
 
-        var x = (event.time/this._hours)*this._size + this._xOffset;
+        var x = this.hourToPixelPosition(event.time, this._size, this._xOffset, this._hours);
         var y = this._yOffset;
 
         this._snap.circle(x, y, RAD);
@@ -132,6 +136,45 @@ class SVGTimelineFactory extends SVGFactory{
 
     };
 
+    drawSliders(timeline){
+
+        var SLIDER_W = 12;
+        var SLIDER_H = 30;
+
+        var leftSliderPos = this.hourToPixelPosition(timeline.left, this._size, this._xOffset, this._hours) - SLIDER_W/2;
+        var rightSliderPos = this.hourToPixelPosition(timeline.right, this._size, this._xOffset, this._hours) - SLIDER_W/2;
+
+        var sliderGroup = this._snap.group();
+
+        var rangeGhost = this._snap.rect(leftSliderPos + SLIDER_W, this._yOffset - SLIDER_H/8, rightSliderPos - leftSliderPos - SLIDER_W, SLIDER_H/4)
+            .attr({fill : "#A9D0F5", "fill-opacity" : 0.65});
+        
+        var leftSlider = this._snap.rect(leftSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
+            .attr({fill : "#0174DF", stroke : "#A9D0F5"});
+
+        var rightSlider = this._snap.rect(rightSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
+            .attr({fill : "#0174DF", stroke : "#A9D0F5"});
+
+        sliderGroup.add(rangeGhost, leftSlider, rightSlider);
+
+
+        var mDownFunc = function(x,y,e){
+
+        };
+
+        var moveFunc = function(dx, dy, x, y){
+            this.transform("t"+dx+","+0);
+        };
+
+        var mUpFunc = function(x,y,e){
+
+        };
+
+        leftSlider.drag(moveFunc, mDownFunc, mUpFunc);
+        rightSlider.drag(moveFunc, mDownFunc, mUpFunc);
+
+    };
+
 
     /**
      * Renders a timeline and associated event objects to the svg
@@ -151,6 +194,8 @@ class SVGTimelineFactory extends SVGFactory{
         for(var i = 0; i < timeline.events.length; i++){
             this.renderEvent(timeline.events[i]);
         }
+
+        this.drawSliders(timeline);
 
     }
 
