@@ -150,10 +150,10 @@ class SVGTimelineFactory extends SVGFactory{
             .attr({fill : "#A9D0F5", "fill-opacity" : 0.65});
         
         var leftSlider = this._snap.rect(leftSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
-            .attr({fill : "#0174DF", stroke : "#A9D0F5"});
+            .attr({fill : "#01DF3A", stroke : "#58FA82"});
 
         var rightSlider = this._snap.rect(rightSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
-            .attr({fill : "#0174DF", stroke : "#A9D0F5"});
+            .attr({fill : "#FF0000", stroke : "#F78181"});
 
         sliderGroup.add(rangeGhost, leftSlider, rightSlider);
 
@@ -162,16 +162,53 @@ class SVGTimelineFactory extends SVGFactory{
 
         };
 
-        var moveFunc = function(dx, dy, x, y){
-            this.transform("t"+dx+","+0);
+        var that = this;
+
+        var svgLeft = $("#svg").position().left;
+
+        var moveFuncLeftSlider = function(dx, dy, x, y){
+
+            var dest = x - svgLeft;
+
+            var rsx = rightSlider.getBBox().x;
+
+            if(
+                x >= (svgLeft + that._xOffset - SLIDER_W/2) &&
+                dest <= rsx &&
+                dest >= 0
+            ) {
+                this.attr({x: x - svgLeft});
+                rangeGhost.attr({
+                    x: x - svgLeft,
+                    width: rsx - dest
+                });
+            }
+
+        };
+
+        var moveFuncRightSlider = function(dx, dy, x, y){
+
+            var dest = x - svgLeft;
+            var lsx = leftSlider.getBBox().x;
+            
+            if(
+                x <= svgLeft + that._size + that._xOffset &&
+                dest >= lsx &&
+                dest >= 0
+            ){
+                this.attr({x :  dest});
+                rangeGhost.attr({
+                    width : (x - svgLeft) - lsx
+                });
+            }
         };
 
         var mUpFunc = function(x,y,e){
 
         };
 
-        leftSlider.drag(moveFunc, mDownFunc, mUpFunc);
-        rightSlider.drag(moveFunc, mDownFunc, mUpFunc);
+        leftSlider.drag(moveFuncLeftSlider, mDownFunc, mUpFunc);
+        rightSlider.drag(moveFuncRightSlider, mDownFunc, mUpFunc);
 
     };
 
