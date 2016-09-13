@@ -56,15 +56,15 @@ class SVGTimelineFactory extends SVGFactory{
                 this._snap.line(tmpX, this._yOffset - TICK_HEIGHT, tmpX, this._yOffset + TICK_HEIGHT)
                     .attr({stroke : "#000000"})
             );
-            
+
             tickGroup.add(this._snap.text(tmpX - 20, this._yOffset+TICK_HEIGHT*4, i+":00"));
-            
+
             g.add(tickGroup);
         }
 
         // Add last tick.
         var tickGroup = this._snap.group();
-        
+
         tickGroup.add(
             this._snap.line(this._size + this._xOffset, this._yOffset - TICK_HEIGHT, this._size + this._xOffset, this._yOffset + TICK_HEIGHT)
                 .attr({stroke : "#000000"})
@@ -78,13 +78,13 @@ class SVGTimelineFactory extends SVGFactory{
      * Converts an floating point hour number to the appropriate time (HH:MM).
      * e.g. 12.5 => 12:30
      * @param f {number} a floating point hour value.
-     * 
+     *
      * @return {string} - the time as a string (HH:MM)
      */
     hourFloatToTime(f){
         var hours = Math.floor(f);
         var mins = Math.floor((f - hours)*60);
-        
+
         return (hours < 10 ? "0"+hours : hours)
             +":"
             +(mins < 10 ? "0"+mins : mins);
@@ -93,6 +93,13 @@ class SVGTimelineFactory extends SVGFactory{
     hourToPixelPosition(t, size, offset, hours){
         return (t/hours)* size + offset;
     }
+
+    pixelsToHours(p, size, offset, hours){
+        var h = ((p-offset)/size)*hours;
+        // rounds to nearest quater of an hour.
+        return Math.round(h/0.25)*0.25;
+    }
+
 
 
     /**
@@ -148,23 +155,30 @@ class SVGTimelineFactory extends SVGFactory{
 
         var rangeGhost = this._snap.rect(leftSliderPos + SLIDER_W, this._yOffset - SLIDER_H/8, rightSliderPos - leftSliderPos - SLIDER_W, SLIDER_H/4)
             .attr({fill : "#A9D0F5", "fill-opacity" : 0.65});
-        
+
         var leftSlider = this._snap.rect(leftSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
             .attr({fill : "#01DF3A", stroke : "#58FA82"});
 
         var rightSlider = this._snap.rect(rightSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
             .attr({fill : "#FF0000", stroke : "#F78181"});
 
-        sliderGroup.add(rangeGhost, leftSlider, rightSlider);
+        var leftSliderLabel = this._snap.text(leftSliderPos - SLIDER_W/2, this._yOffset + 35, this.hourFloatToTime(timeline.left))
+            .attr({"font-size" : 12, "display" : "none"});
+
+        var rightSliderLabel = this._snap.text(rightSliderPos - SLIDER_W/2, this._yOffset + 35, this.hourFloatToTime(timeline.right))
+            .attr({"font-size" : 12, "display" : "none"});
 
 
-        var mDownFunc = function(x,y,e){
-
-        };
+        sliderGroup.add(rangeGhost, leftSlider, rightSlider, leftSliderLabel, rightSliderLabel);
 
         var that = this;
 
         var svgLeft = $("#svg").position().left;
+
+        var mDownFunc = function(x,y,e){
+            leftSliderLabel.attr({"display" : "block"});
+            rightSliderLabel.attr({"display" : "block"});
+        };
 
         var moveFuncLeftSlider = function(dx, dy, x, y){
 
@@ -177,11 +191,13 @@ class SVGTimelineFactory extends SVGFactory{
                 dest <= rsx &&
                 dest >= 0
             ) {
-                this.attr({x: x - svgLeft});
+                this.attr({x: dest});
                 rangeGhost.attr({
-                    x: x - svgLeft,
+                    x: dest,
                     width: rsx - dest
                 });
+                timeline.left = that.pixelsToHours(dest, that._size, that._xOffset, that._hours);
+                leftSliderLabel.attr({x : dest - SLIDER_W/2, text : that.hourFloatToTime(timeline.left)});
             }
 
         };
@@ -190,7 +206,7 @@ class SVGTimelineFactory extends SVGFactory{
 
             var dest = x - svgLeft;
             var lsx = leftSlider.getBBox().x;
-            
+
             if(
                 x <= svgLeft + that._size + that._xOffset &&
                 dest >= lsx &&
@@ -200,11 +216,14 @@ class SVGTimelineFactory extends SVGFactory{
                 rangeGhost.attr({
                     width : (x - svgLeft) - lsx
                 });
+                timeline.right = that.pixelsToHours(dest, that._size, that._xOffset, that._hours);
+                rightSliderLabel.attr({x : dest - SLIDER_W/2, text : that.hourFloatToTime(timeline.right)});
             }
         };
 
         var mUpFunc = function(x,y,e){
-
+            leftSliderLabel.attr({"display" : "none"});
+            rightSliderLabel.attr({"display" : "none"});
         };
 
         leftSlider.drag(moveFuncLeftSlider, mDownFunc, mUpFunc);
