@@ -148,19 +148,26 @@ class SVGTimelineFactory extends SVGFactory{
         var SLIDER_W = 12;
         var SLIDER_H = 30;
 
+        var LEFT_SLIDER_FILL = "#01DF3A";
+        var LEFT_SLIDER_STROKE = "#80ef9c";
+        var RIGHT_SLIDER_FILL = "#FF0000";
+        var RIGHT_SLIDER_STROKE = "#F78181";
+        var RANGE_FILL = "#A9D0F5";
+        var RANGE_FILL_ACTIVE = "#7bb7f0";
+
         var leftSliderPos = this.hourToPixelPosition(timeline.left, this._size, this._xOffset, this._hours) - SLIDER_W/2;
         var rightSliderPos = this.hourToPixelPosition(timeline.right, this._size, this._xOffset, this._hours) - SLIDER_W/2;
 
         var sliderGroup = this._snap.group();
 
         var rangeGhost = this._snap.rect(leftSliderPos + SLIDER_W, this._yOffset - SLIDER_H/8, rightSliderPos - leftSliderPos - SLIDER_W, SLIDER_H/4)
-            .attr({fill : "#A9D0F5", "fill-opacity" : 0.65});
+            .attr({fill : RANGE_FILL, "fill-opacity" : 0.65});
 
         var leftSlider = this._snap.rect(leftSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
-            .attr({fill : "#01DF3A", stroke : "#58FA82"});
+            .attr({fill : LEFT_SLIDER_FILL, stroke : LEFT_SLIDER_STROKE});
 
         var rightSlider = this._snap.rect(rightSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
-            .attr({fill : "#FF0000", stroke : "#F78181"});
+            .attr({fill :  RIGHT_SLIDER_FILL, stroke : RIGHT_SLIDER_STROKE});
 
         var leftSliderLabel = this._snap.text(leftSliderPos - SLIDER_W/2, this._yOffset + 35, this.hourFloatToTime(timeline.left))
             .attr({"font-size" : 12, "display" : "none"});
@@ -175,9 +182,16 @@ class SVGTimelineFactory extends SVGFactory{
 
         var svgLeft = $("#svg").position().left;
 
-        var mDownFunc = function(x,y,e){
+        var mDownFuncLeft = function(x,y,e){
             leftSliderLabel.attr({"display" : "block"});
+            rangeGhost.attr({"fill" : RANGE_FILL_ACTIVE});
+            this.attr({"fill" : LEFT_SLIDER_STROKE});
+        };
+
+        var mDownFuncRight = function(x,y,e){
             rightSliderLabel.attr({"display" : "block"});
+            rangeGhost.attr({"fill" : RANGE_FILL_ACTIVE});
+            this.attr({"fill" : RIGHT_SLIDER_STROKE});
         };
 
         var moveFuncLeftSlider = function(dx, dy, x, y){
@@ -221,13 +235,23 @@ class SVGTimelineFactory extends SVGFactory{
             }
         };
 
-        var mUpFunc = function(x,y,e){
+        var mUpFuncLeft = function(x,y,e){
             leftSliderLabel.attr({"display" : "none"});
-            rightSliderLabel.attr({"display" : "none"});
+            rangeGhost.attr({"fill" : RANGE_FILL});
+            this.attr({"fill" : LEFT_SLIDER_FILL})
         };
 
-        leftSlider.drag(moveFuncLeftSlider, mDownFunc, mUpFunc);
-        rightSlider.drag(moveFuncRightSlider, mDownFunc, mUpFunc);
+        var mUpFuncRight = function(x,y,e){
+            rightSliderLabel.attr({"display" : "none"});
+            rangeGhost.attr({"fill" : RANGE_FILL});
+            this.attr({"fill" : RIGHT_SLIDER_FILL});
+        };
+
+        leftSlider.drag(moveFuncLeftSlider, mDownFuncLeft, mUpFuncLeft);
+        rightSlider.drag(moveFuncRightSlider, mDownFuncRight, mUpFuncRight);
+
+        leftSlider.mouseover = function(){};
+        leftSlider.mouseout = function(){;};
 
     };
 
