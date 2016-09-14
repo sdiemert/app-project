@@ -85,9 +85,33 @@ function apiService($http, $base64){
             cb(null);
         }, function error(resp){
             cb("error");
-
         });
 
-    }
+    };
+
+    /**
+     * Marks the user as having requested to exit the study.
+     * @param user {string}
+     * @param pass {string}
+     * @param status {string,number} denotes the state/status of the app when they exited (e.g. question number).
+     * @param cb {function}
+     */
+    this.exitStudy = function(user, pass, status, cb){
+
+        $http({
+            method : "POST",
+            url : "/api/exit",
+            headers : {
+                "Content-Type": "application/json",
+                "Authorization": makeAuth(user, pass)
+            },
+            body : {status : status}
+        }).then(function success(resp){
+            cb(null);
+        }, function error(resp){
+            cb("error");
+        });
+
+    };
 
 }

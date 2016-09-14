@@ -11,7 +11,7 @@
  * @param $scope
  * @param $rootScope
  */
-function svgController($scope, $rootScope, $state){
+function svgController($scope, $rootScope, $state, apiService){
 
     /**
      * Initialize the SVG view with required data.
@@ -26,12 +26,44 @@ function svgController($scope, $rootScope, $state){
         events.push(new Event(24.50, "1000 mg"));
         events.push(new Event(30.40, "10 mg"));
 
-        var timeline = new SliderTimeline(72, events);
+        $scope.timeline = new SliderTimeline(72, events);
 
-        $scope.timelineFactory.renderTimeline(timeline);
+        $scope.timelineFactory.renderTimeline($scope.timeline);
 
     };
 
+    /**
+     * The participant wishes to exit the study.
+     * Must double check with a pop-up that they are sure.
+     */
+    $scope.exitStudy = function(status){
+
+        var resp = confirm("Are you sure you would like to exit the study? You will be unable to continue later.");
+
+        if(resp === true){
+            apiService.exitStudy($rootScope.username, $rootScope.password, status, function(err){
+                $state.go("exit");
+            });
+        }
+
+    };
+
+    /**
+     * To be called when the "done" button is selected.
+     * @param cb {function} to be called once the task is done,
+     *  if null or undefined the default behavior is to send the response to
+     *  the server for recording.
+     */
+    $scope.doneTask = function(cb){
+
+        console.log("doneTask", cb);
+
+        if(cb) cb($scope.timeline);
+        else{
+
+        }
+
+    };
 
 
     // Call the init function to kick things off.
