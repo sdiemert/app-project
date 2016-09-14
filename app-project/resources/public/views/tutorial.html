@@ -41,7 +41,9 @@
 
                 if(timeline.left === 60 && timeline.right === 70){
 
-                    // TODO: Advance to the study.
+                    console.log("advancing to 'begin' state...");
+
+                    scope.next("begin");
 
                 }else{
                     alert("Please place the interval sliders as described above.");

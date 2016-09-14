@@ -65,6 +65,10 @@ function svgController($scope, $rootScope, $state, apiService){
 
     };
 
+    $scope.next = function(goTo){
+        $state.go(goTo);
+    };
+
 
     // Call the init function to kick things off.
     $scope.init();

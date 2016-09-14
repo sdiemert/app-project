@@ -32,6 +32,15 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/exit",
             templateUrl: "views/exit.html"
         })
+        .state('begin', {
+            url: "/begin",
+            templateUrl: "views/begin.html"
+        })
+        .state('question', {
+            url: "/question/{questionNum:int}",
+            templateUrl: "views/question.html",
+            controller : "questionController"
+        })
 });
 
 app.service("apiService", ["$http", "$base64", apiService]);
@@ -41,6 +50,7 @@ app.controller("landingController", ["$scope", "apiService", landingController])
 app.controller("consentController", ["$scope", "$rootScope", "$state","apiService", consentController]);
 app.controller("tutorialController", ["$scope", "$rootScope", "$state","apiService", tutorialController]);
 app.controller("svgController", ["$scope", "$rootScope", "$state", "apiService", svgController]);
+app.controller("questionController", ["$scope", "$rootScope", "$state", "apiService", questionController]);
 
 /*
 // TODO: UNCOMMENT ME - frustrating to have in dev mode.
