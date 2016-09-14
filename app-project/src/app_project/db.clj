@@ -66,3 +66,7 @@
 (defn consent [user val]
   (grape/attempt rules/GTSystem (grape/apl 'update-consent! user (str val)))
   )
+
+(defn exit-study [user status]
+  (grape/attempt rules/GTSystem (grape/apl 'exit-study! user (str status)))
+  )

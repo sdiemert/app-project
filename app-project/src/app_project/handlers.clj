@@ -133,4 +133,20 @@
     )
   )
 
+(defn exit-study [req]
+  (let [
+        name (get (req :body) "username")
+        status (get (req :body) "exit-status")
+        user-data (db/fetch-user name)
+        ]
+    (if (or (nil? user-data) (nil? status))
+      (resp/status (resp/content-type (resp/response "user not found or invalid status") "text/plain") 204)
+      (if (db/exit-study name status)
+        (resp/status (resp/content-type (resp/response "successfully exited study") "text/plain") 200)
+        (resp/status (resp/content-type (resp/response "failed to exit study") "text/plain") 500)
+        )
+      )
+    )
+  )
+
 (db/connect)

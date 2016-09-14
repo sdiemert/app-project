@@ -27,7 +27,7 @@
             <div class="row" style="text-align:left;">
                 <div class="twelve columns">
                     <button onclick="doneTask();" class="success">Done</button>
-                    <button ng-click="exitStudy();" class="error u-pull-right">Exit Study</button>
+                    <button ng-click="exitStudy('tutorial');" class="error u-pull-right">Exit Study</button>
                 </div>
             </div>
         </div>
@@ -35,6 +35,7 @@
         <script type="text/javascript">
 
             function doneTask(){
+
                 var scope = angular.element($("#tutorial-control")).scope();
                 var timeline = scope.timeline;
 

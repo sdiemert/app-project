@@ -17,6 +17,7 @@
 (defroutes user-routes
            (GET "/" [] handlers/default)
            (POST "/consent" [] handlers/consent)
+           (POST "/exit"     [] handlers/exit-study)
            )
 
 (defroutes admin-routes
@@ -25,6 +26,7 @@
            (POST    "/user/:user-id/password" [] handlers/update-password)
            (GET     "/user"                   [] handlers/fetch-users)
            (GET     "/user/:user-id"          [] handlers/fetch-user)
+
            )
 
 

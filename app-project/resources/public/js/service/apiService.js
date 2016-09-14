@@ -98,14 +98,21 @@ function apiService($http, $base64){
      */
     this.exitStudy = function(user, pass, status, cb){
 
+        console.log(user, pass, status);
+
+        var d = {"username" : user, "status" : status};
+
         $http({
             method : "POST",
             url : "/api/exit",
             headers : {
-                "Content-Type": "application/json",
-                "Authorization": makeAuth(user, pass)
+                "Content-Type" : "application/json",
+                "Authorization" : makeAuth(user, pass)
             },
-            body : {status : status}
+            data : {
+                "username" : user,
+                "exit-status" : status
+            }
         }).then(function success(resp){
             cb(null);
         }, function error(resp){

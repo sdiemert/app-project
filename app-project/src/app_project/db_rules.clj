@@ -101,5 +101,18 @@
             }
            GTSystem)
      )
+
+   (def GTSystem
+     (rule 'exit-study! ['user 'status]
+           {:read (pattern
+                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                    )
+            :create  (pattern
+                       (node 'n2 {:asserts {:kind "'exit'" :value "'&status'"}})
+                       (edge 'e1 {:src 'n1 :tar 'n2 :label "exit"})
+                       )
+            }
+           GTSystem)
+     )
   )
 )
