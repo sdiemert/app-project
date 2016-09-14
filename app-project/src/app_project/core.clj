@@ -12,6 +12,7 @@
 
 (defroutes public-api-routes
            (POST "/auth" [] handlers/auth-user-http)
+           (GET "/timeline/:id" [] handlers/get-timeline)
            )
 
 (defroutes user-routes

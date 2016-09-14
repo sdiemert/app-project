@@ -5,6 +5,8 @@
             )
   )
 
+(def timelines (json/read-str (slurp "resources/timelines.json")))
+
 (defn serveIndex [resp]
   (resp/content-type (resp/resource-response "index.html" {:root "public"}) "text/html")
   )
@@ -150,9 +152,18 @@
     )
   )
 
-(def timelines (json/read-str (slurp "resources/timelines.json")))
+(defn get-timeline [req]
+  (let [
+        qid (Integer/parseInt ((req :params) :id))
+        ]
+    (if (or (>= qid (count timelines)) (< qid 0))
+      (resp/status (resp/content-type (resp/response "question number out of range.") "text/plain") 401)
+      (resp/status (resp/content-type (resp/response (timelines qid)) "application/json") 200)
+      )
+    )
+  )
 
-(println (str "Using timeline data:" timelines))
+(println (str "Using timeline data:" timelines " count " (count timelines)))
 
 (db/connect)
 
