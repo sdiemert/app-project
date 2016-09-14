@@ -1,6 +1,7 @@
 (ns app-project.handlers
   (:require [ring.util.response :as resp]
             [app-project.db :as db]
+            [clojure.data.json :as json]
             )
   )
 
@@ -149,4 +150,9 @@
     )
   )
 
+(def timelines (json/read-str (slurp "resources/timelines.json")))
+
+(println (str "Using timeline data:" timelines))
+
 (db/connect)
+

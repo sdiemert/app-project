@@ -26,7 +26,6 @@
            (POST    "/user/:user-id/password" [] handlers/update-password)
            (GET     "/user"                   [] handlers/fetch-users)
            (GET     "/user/:user-id"          [] handlers/fetch-user)
-
            )
 
 
@@ -39,7 +38,6 @@
            (route/resources "/")
            (route/not-found "Not Found")
            )
-
 
 (def app (-> (routes
                (context "/api" []
