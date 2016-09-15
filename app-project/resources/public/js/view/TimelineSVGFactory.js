@@ -100,8 +100,6 @@ class SVGTimelineFactory extends SVGFactory{
         return Math.round(h/0.25)*0.25;
     }
 
-
-
     /**
      * Based on event time, draw the event indicator on the SVG object.
      * Scale time to the length of the timeline.
@@ -163,10 +161,10 @@ class SVGTimelineFactory extends SVGFactory{
         var rangeGhost = this._snap.rect(leftSliderPos + SLIDER_W, this._yOffset - SLIDER_H/8, rightSliderPos - leftSliderPos - SLIDER_W, SLIDER_H/4)
             .attr({fill : RANGE_FILL, "fill-opacity" : 0.65});
 
-        var leftSlider = this._snap.rect(leftSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
+        var leftSlider = this._snap.rect(leftSliderPos , this._yOffset - SLIDER_H/2 + 7, SLIDER_W, SLIDER_H, 5,5)
             .attr({fill : LEFT_SLIDER_FILL, stroke : LEFT_SLIDER_STROKE});
 
-        var rightSlider = this._snap.rect(rightSliderPos , this._yOffset - SLIDER_H/2, SLIDER_W, SLIDER_H, 5,5)
+        var rightSlider = this._snap.rect(rightSliderPos , this._yOffset - SLIDER_H/2 - 7, SLIDER_W, SLIDER_H, 5,5)
             .attr({fill :  RIGHT_SLIDER_FILL, stroke : RIGHT_SLIDER_STROKE});
 
         var leftSliderLabel = this._snap.text(leftSliderPos - SLIDER_W/2, this._yOffset + 35, this.hourFloatToTime(timeline.left))
