@@ -4,16 +4,18 @@
 
 class Timeline{
 
-    constructor(hours, events){
+    constructor(hours, events, rxString, description){
         this.hours = hours;
         this.events = events;
+        this.description = description || null;
+        this.rx = rxString || null;
     }
 
 }
 
 class SliderTimeline extends Timeline{
-    constructor(hours, events){
-        super(hours, events);
+    constructor(hours, events, rx, description){
+        super(hours, events, rx, description);
 
         this.left = 0;
         this.right = hours; 

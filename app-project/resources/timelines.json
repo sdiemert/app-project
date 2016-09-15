@@ -5,15 +5,19 @@
       {"time" : 24, "dose" : "100 mg"},
       {"time" : 48, "dose" : "100 mg"},
       {"time" : 60, "dose" : "100 mg"}
-    ]
+    ],
+    "description" : "Some scenario description. The quick brown fox jumped over the lazy dogs.",
+    "rx" : "take 1 PO BID PRN"
   },
 
   {
-    "hours" : 72,
+    "hours" : 96,
     "events" : [
-      {"time" : 15.00, "dose" : "100 mg"},
-      {"time" : 30.25, "dose" : "100 mg"},
-      {"time" : 47, "dose" : "100 mg"}
-    ]
+      {"time" : 15.00, "dose" : "10 mg"},
+      {"time" : 30.25, "dose" : "10 mg"},
+      {"time" : 47, "dose" : "10 mg"}
+    ],
+    "description" : "Some scenario description. The quick brown fox jumped over the lazy dogs.",
+    "rx" : "take 10 mg PO TID "
   }
 ]

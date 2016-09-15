@@ -1,12 +1,9 @@
 <div class="row" ng-controller="questionController">
     <div class="twelve columns">
 
-        <p>
-            Scenario - lorem ipsum - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque nec tincidunt ante. Etiam pulvinar metus quis risus eleifend commodo.
-            Aenean placerat lorem id dui consequat cursus. Fusce semper, urna vitae convallis sodales,
-            tortor turpis vulputate lorem, id vestibulum dolor nunc a odio.
-        </p>
+        <p>{{timeline.description}}</p>
+
+        <p>{{timeline.rx}}</p>
 
         <p style="font-style: italic">
             Adjust the interval slides to indicate when the range of time for the next dose. Press "Done" when you are finished.
@@ -19,7 +16,5 @@
                 <button class='error u-pull-right' ng-click="exitStudy('question-'+questionNumber);">Exit Study</button>
             </div>
         </div>
-
-
     </div>
 </div>

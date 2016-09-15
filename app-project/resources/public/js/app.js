@@ -41,6 +41,10 @@ app.config(function($stateProvider, $urlRouterProvider){
             templateUrl: "views/question.html",
             controller : "questionController"
         })
+        .state('end', {
+            url: "/end",
+            templateUrl: "views/end.html"
+        })
 });
 
 app.service("apiService", ["$http", "$base64", apiService]);

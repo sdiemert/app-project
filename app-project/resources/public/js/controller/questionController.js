@@ -32,7 +32,7 @@ function questionController ($scope, $rootScope, $state, apiService){
                     $state.go("question", {questionNum : d.next})
                 }else{
                     // TODO: Make new "end" state page.
-                    $state.go("exit")
+                    $state.go("end")
                 }
             }
         );
