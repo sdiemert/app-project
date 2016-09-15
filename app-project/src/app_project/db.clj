@@ -63,15 +63,23 @@
     )
   )
 
-(defn consent [user val]
-  (grape/attempt rules/GTSystem (grape/apl 'update-consent! user (str val)))
+(defn consent [user val ts]
+  (grape/attempt rules/GTSystem (grape/apl 'update-consent! user (str val) (str ts)))
   )
 
-(defn exit-study [user status]
-  (grape/attempt rules/GTSystem (grape/apl 'exit-study! user (str status)))
+(defn exit-study [user status ts]
+  (grape/attempt rules/GTSystem (grape/apl 'exit-study! user (str status) (str ts)))
+  )
+
+(defn done-study [user ts]
+  (grape/attempt rules/GTSystem (grape/apl 'done-study! user (str ts)))
   )
 
 
 (defn record-timeline-response [user qid l-val u-val ts]
   (grape/attempt rules/GTSystem (grape/apl 'record-timeline-response! user (str qid) (str l-val) (str u-val) (str ts)))
+  )
+
+(defn has-already-answered [user qid]
+  (grape/attempt rules/GTSystem (grape/apl 'already-answered? user (str qid)))
   )

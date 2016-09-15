@@ -12,14 +12,15 @@
 
 (defroutes public-api-routes
            (POST "/auth" [] handlers/auth-user-http)
-           (GET "/timeline/:id" [] handlers/get-timeline)
            )
 
 (defroutes user-routes
            (GET "/" [] handlers/default)
            (POST "/consent" [] handlers/consent)
            (POST "/exit"     [] handlers/exit-study)
+           (POST "/done"     [] handlers/done-study)
            (POST "/question/:qid" [] handlers/question-response)
+           (GET  "/timeline/:id" [] handlers/get-timeline)
            )
 
 (defroutes admin-routes

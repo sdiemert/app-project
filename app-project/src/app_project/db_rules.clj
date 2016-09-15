@@ -87,14 +87,14 @@
      )
 
    (def GTSystem
-     (rule 'update-consent! ['user 'consent]
+     (rule 'update-consent! ['user 'consent 'ts]
            {:read (pattern
                     (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
                     (node 'n2 {:asserts {:kind "'consent'"}})
                     (edge 'e1 {:src 'n1 :tar 'n2 :label "consent"})
                     )
             :create  (pattern
-                       (node 'n3 {:asserts {:kind "'consent'" :value "'&consent'"}})
+                       (node 'n3 {:asserts {:kind "'consent'" :value "'&consent'" :time "'&ts'"}})
                        (edge 'e2 {:src 'n1 :tar 'n3 :label "consent"})
                        )
             :delete ['e1 'n2]
@@ -103,14 +103,38 @@
      )
 
    (def GTSystem
-     (rule 'exit-study! ['user 'status]
+     (rule 'exit-study! ['user 'status 'ts]
            {:read (pattern
                     (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
                     )
             :create  (pattern
-                       (node 'n2 {:asserts {:kind "'exit'" :value "'&status'"}})
+                       (node 'n2 {:asserts {:kind "'exit'" :value "'&status'" :time "'&ts'"}})
                        (edge 'e1 {:src 'n1 :tar 'n2 :label "exit"})
                        )
+            }
+           GTSystem)
+     )
+
+   (def GTSystem
+     (rule 'done-study! ['user 'ts]
+           {:read (pattern
+                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                    )
+            :create  (pattern
+                       (node 'n2 {:asserts {:kind "'done'" :value "'user completed the study'" :time "'&ts'"}})
+                       (edge 'e1 {:src 'n1 :tar 'n2 :label "done"})
+                       )
+            }
+           GTSystem)
+     )
+
+   (def GTSystem
+     (rule 'already-answered? ['user 'qid]
+           {:read (pattern
+                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                    (node 'n2 {:asserts {:kind "'response'" :questionNumber "'&qid'"}})
+                    (edge 'e1 {:src 'n1 :tar 'n2 :label "response"})
+                    )
             }
            GTSystem)
      )

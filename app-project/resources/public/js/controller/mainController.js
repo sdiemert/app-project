@@ -51,7 +51,7 @@
     };
 
     /**
-     * The participant wishes to exit the study.
+     * The participant wishes to exit the study - they will not be able to participate again.
      * Must double check with a pop-up that they are sure.
      */
     $scope.exitStudy = function(status){
@@ -60,9 +60,31 @@
 
         if(resp === true){
             apiService.exitStudy($rootScope.username, $rootScope.password, status, function(err){
+
+                $rootScope.username = null;
+                $rootScope.password = null;
+                $rootScope.authorized = null;
+                $rootScope.consent = null;
+
                 $state.go("exit");
             });
         }
 
     };
+
+    /**
+     * The participate has completed the study, delete their stored credentials.
+     * Also, write a "completion of study" to the web server.
+
+     */
+    $scope.doneStudy = function(){
+
+        $rootScope.username = null;
+        $rootScope.password = null;
+        $rootScope.authorized = null;
+        $rootScope.consent = null;
+
+    };
+
+
 }
