@@ -208,7 +208,7 @@ class SVGTimelineFactory extends SVGFactory{
                     x: dest,
                     width: rsx - dest
                 });
-                timeline.left = that.pixelsToHours(dest, that._size, that._xOffset, that._hours);
+                timeline.left = that.pixelsToHours(dest + SLIDER_W/2, that._size, that._xOffset, that._hours);
                 leftSliderLabel.attr({x : dest - SLIDER_W/2, text : that.hourFloatToTime(timeline.left)});
             }
 
@@ -228,7 +228,7 @@ class SVGTimelineFactory extends SVGFactory{
                 rangeGhost.attr({
                     width : (x - svgLeft) - lsx
                 });
-                timeline.right = that.pixelsToHours(dest, that._size, that._xOffset, that._hours);
+                timeline.right = that.pixelsToHours(dest + SLIDER_W/2, that._size, that._xOffset, that._hours);
                 rightSliderLabel.attr({x : dest - SLIDER_W/2, text : that.hourFloatToTime(timeline.right)});
             }
         };
