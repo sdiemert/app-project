@@ -37,7 +37,6 @@ function questionController ($scope, $rootScope, $state, apiService){
                 if(d.next){
                     $state.go("question", {questionNum : d.next})
                 }else{
-                    // TODO: Make new "end" state page.
                     $state.go("end")
                 }
             }

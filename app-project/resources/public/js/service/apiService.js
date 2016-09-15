@@ -117,6 +117,31 @@ function apiService($http, $base64){
     };
 
     /**
+     * Marks the study as completed.
+     * @param user {string}
+     * @param pass {string}
+     * @param cb {function}
+     */
+    this.doneStudy = function(user, pass, cb){
+
+        $http({
+            method : "POST",
+            url : "/api/done",
+            headers : {
+                "Content-Type" : "application/json",
+                "Authorization" : makeAuth(user, pass)
+            },
+            data : {
+                "username" : user
+            }
+        }).then(function success(resp){
+            cb(null);
+        }, function error(resp){
+            cb("error");
+        });
+    };
+
+    /**
      * Fetches a timeline from the server.
      * @param id {number} the id of the timeline to fetch.
      * @param cb {function} called when complete with the timeline as the parameter or null.

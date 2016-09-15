@@ -79,10 +79,15 @@
      */
     $scope.doneStudy = function(){
 
-        $rootScope.username = null;
-        $rootScope.password = null;
-        $rootScope.authorized = null;
-        $rootScope.consent = null;
+        apiService.doneStudy($rootScope.username, $rootScope.password, function(err){
+
+            $rootScope.username = null;
+            $rootScope.password = null;
+            $rootScope.authorized = null;
+            $rootScope.consent = null;
+
+            $state.go("end");
+        });
 
     };
 
