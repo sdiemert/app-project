@@ -56,7 +56,7 @@ app.controller("tutorialController", ["$scope", "$rootScope", "$state","apiServi
 app.controller("svgController", ["$scope", "$rootScope", "$state", "apiService", svgController]);
 app.controller("questionController", ["$scope", "$rootScope", "$state", "apiService", questionController]);
 
-
+/*
 // TODO: UNCOMMENT ME - frustrating to have in dev mode.
 app.run(function($rootScope, $state, $location){
 
@@ -74,6 +74,7 @@ app.run(function($rootScope, $state, $location){
     });
 
 });
+*/
 
 
 

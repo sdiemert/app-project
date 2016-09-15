@@ -20,9 +20,15 @@ function questionController ($scope, $rootScope, $state, apiService){
                 var fact = new SVGTimelineFactory("svg", 50, 100, 700, 12, timeline.hours);
                 fact.renderTimeline($scope.timeline);
 
+                $(window).on("resize", function(){
+                    fact.renderTimeline($scope.timeline);
+                });
+
             }
 
         });
+
+
 
     };
 

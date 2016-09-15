@@ -262,6 +262,8 @@ class SVGTimelineFactory extends SVGFactory{
      */
     renderTimeline(timeline){
 
+        this._snap.clear();
+
         if(this._hours !== timeline.hours){
             console.log("timeline hour and factory hours mismatch! Using timeline hours");
             this._hours = timeline.hours;

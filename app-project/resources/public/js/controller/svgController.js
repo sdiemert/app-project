@@ -31,6 +31,10 @@ function svgController($scope, $rootScope, $state, apiService){
 
         $scope.timelineFactory.renderTimeline($scope.timeline);
 
+        $(window).on("resize", function(){
+            $scope.timelineFactory.renderTimeline($scope.timeline);
+        });
+
     };
 
     /**
