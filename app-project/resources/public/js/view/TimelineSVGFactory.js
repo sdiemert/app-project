@@ -35,8 +35,7 @@ class SVGTimelineFactory extends SVGFactory{
     drawTimelineAxis(timeline){
 
         var hours = this._hours;
-
-        var TICK_SPACING = Math.round(this._size / hours);
+        var TICK_SPACING = this._size/ hours;
         var TICK_HEIGHT = 5;
 
         // x1, y1, x2, y2
@@ -91,7 +90,8 @@ class SVGTimelineFactory extends SVGFactory{
     }
 
     hourToPixelPosition(t, size, offset, hours){
-        return (t/hours)* size + offset;
+        var h = t/hours;
+        return h * size  + offset;
     }
 
     pixelsToHours(p, size, offset, hours){

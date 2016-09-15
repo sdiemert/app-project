@@ -21,10 +21,11 @@ function svgController($scope, $rootScope, $state, apiService){
         $scope.timelineFactory = new SVGTimelineFactory("svg", 50, 100, 700, 12, 72);
 
         var events = [];
-        events.push(new Event(10.50, "100 mg"));
-        events.push(new Event(70.25, "10 mg"));
-        events.push(new Event(24.50, "1000 mg"));
-        events.push(new Event(30.40, "10 mg"));
+        events.push(new Event(12, "100 mg"));
+        events.push(new Event(24, "10 mg"));
+        events.push(new Event(36, "1000 mg"));
+        events.push(new Event(48, "10 mg"));
+        events.push(new Event(60, "10 mg"));
 
         $scope.timeline = new SliderTimeline(72, events);
 
