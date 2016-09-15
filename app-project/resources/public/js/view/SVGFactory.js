@@ -12,6 +12,7 @@ class SVGFactory{
      */
     constructor(canvasId) {
         this._snap = Snap("#" + canvasId);
+        this._snap.clear();
     }
 
 }

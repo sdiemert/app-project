@@ -70,3 +70,8 @@
 (defn exit-study [user status]
   (grape/attempt rules/GTSystem (grape/apl 'exit-study! user (str status)))
   )
+
+
+(defn record-timeline-response [user qid l-val u-val ts]
+  (grape/attempt rules/GTSystem (grape/apl 'record-timeline-response! user (str qid) (str l-val) (str u-val) (str ts)))
+  )

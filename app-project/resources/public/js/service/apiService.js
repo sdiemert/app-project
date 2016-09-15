@@ -98,10 +98,6 @@ function apiService($http, $base64){
      */
     this.exitStudy = function(user, pass, status, cb){
 
-        console.log(user, pass, status);
-
-        var d = {"username" : user, "status" : status};
-
         $http({
             method : "POST",
             url : "/api/exit",
@@ -118,7 +114,62 @@ function apiService($http, $base64){
         }, function error(resp){
             cb("error");
         });
+    };
+
+    /**
+     * Fetches a timeline from the server.
+     * @param id {number} the id of the timeline to fetch.
+     * @param cb {function} called when complete with the timeline as the parameter or null.
+     */
+    this.getTimeline = function(id, cb){
+
+        $http({
+            method : "GET",
+            url : "/api/timeline/"+id
+        }).then(function success(resp){
+
+            var events = [];
+
+            for(var i = 0; i < resp.data.events.length; i++){
+                events.push(new Event(resp.data.events[i].time, resp.data.events[i].dose));
+            }
+
+            cb(new SliderTimeline(resp.data.hours, events));
+
+        }, function error(resp){
+            cb(null);
+        });
 
     };
+
+    /**
+     * Sends question answer data back to the server
+     * @param id {number} the question number
+     * @param timeline {SliderTimeline}
+     * @param user {string} username to associate the response to
+     * @param pass {string} the users password
+     * @param cb {function} called when the request is done.
+     */
+    this.sendResponse = function(id, timeline, user, pass, cb){
+
+        $http({
+            method : "POST",
+            url : "/api/question/"+id,
+            headers : {
+                "Content-Type" : "application/json",
+                "Authorization" : makeAuth(user, pass)
+            },
+            data : {
+                "username" : user,
+                "answer-lower": timeline.left,
+                "answer-upper" : timeline.right
+            }
+        }).then(function success(resp){
+            cb(resp.data);
+        }, function error(resp){
+            cb("error");
+        });
+
+    }
 
 }

@@ -2,9 +2,18 @@
   {
     "hours" : 72,
     "events" : [
-      {"time" : 50.25, "dose" : "100 mg"},
+      {"time" : 24, "dose" : "100 mg"},
+      {"time" : 48, "dose" : "100 mg"},
+      {"time" : 60, "dose" : "100 mg"}
+    ]
+  },
+
+  {
+    "hours" : 72,
+    "events" : [
+      {"time" : 15.00, "dose" : "100 mg"},
       {"time" : 30.25, "dose" : "100 mg"},
-      {"time" : 40.25, "dose" : "100 mg"}
+      {"time" : 47, "dose" : "100 mg"}
     ]
   }
 ]

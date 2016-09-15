@@ -163,6 +163,29 @@
     )
   )
 
+(defn question-response [req]
+  (let
+    [
+     qid (Integer/parseInt ((req :params) :qid))
+     name (get (req :body) "username")
+     lower-resp (get (req :body) "answer-lower")
+     upper-resp (get (req :body) "answer-upper")
+     ts (quot (System/currentTimeMillis) 1000)
+     user-data (db/fetch-user name)
+     next (if (>= qid (- (count timelines) 1)) nil (+ qid 1))
+     _ (println (str "Response from user " name " lower: " lower-resp " ,upper " upper-resp))
+     ]
+
+    (if (or (nil? qid) (nil? user-data) (nil? lower-resp) (nil? upper-resp))
+      (resp/status (resp/content-type (resp/response "invalid request") "text/plain") 401)
+      (if (db/record-timeline-response name qid lower-resp upper-resp ts)
+        (resp/status (resp/content-type (resp/response {:next next}) "application/json") 200)
+        (resp/status (resp/content-type (resp/response "failed to log response") "text/plain") 500)
+        )
+      )
+    )
+  )
+
 (println (str "Using timeline data:" timelines " count " (count timelines)))
 
 (db/connect)

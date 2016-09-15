@@ -114,5 +114,27 @@
             }
            GTSystem)
      )
+
+   (def GTSystem
+     (rule 'record-timeline-response! ['user 'qid 'lower 'upper 'ts]
+           {:read (pattern
+                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                    )
+            :create  (pattern
+                       (node 'n2 {:asserts
+                                  {:kind "'response'"
+                                   :type "'timeline'"
+                                   :questionNumber "'&qid'"
+                                   :lower "'&lower'"
+                                   :upper "'&upper'"
+                                   :time "'&ts'"
+                                   }
+                                }
+                             )
+                       (edge 'e1 {:src 'n1 :tar 'n2 :label "response"})
+                       )
+            }
+           GTSystem)
+     )
   )
 )

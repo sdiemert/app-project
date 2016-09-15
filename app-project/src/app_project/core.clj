@@ -19,6 +19,7 @@
            (GET "/" [] handlers/default)
            (POST "/consent" [] handlers/consent)
            (POST "/exit"     [] handlers/exit-study)
+           (POST "/question/:qid" [] handlers/question-response)
            )
 
 (defroutes admin-routes

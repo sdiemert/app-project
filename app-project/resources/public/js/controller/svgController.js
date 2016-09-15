@@ -33,22 +33,6 @@ function svgController($scope, $rootScope, $state, apiService){
     };
 
     /**
-     * The participant wishes to exit the study.
-     * Must double check with a pop-up that they are sure.
-     */
-    $scope.exitStudy = function(status){
-
-        var resp = confirm("Are you sure you would like to exit the study? You will be unable to continue later.");
-
-        if(resp === true){
-            apiService.exitStudy($rootScope.username, $rootScope.password, status, function(err){
-                $state.go("exit");
-            });
-        }
-
-    };
-
-    /**
      * To be called when the "done" button is selected.
      * @param cb {function} to be called once the task is done,
      *  if null or undefined the default behavior is to send the response to

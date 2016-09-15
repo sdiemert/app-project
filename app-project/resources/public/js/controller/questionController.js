@@ -2,20 +2,47 @@ function questionController ($scope, $rootScope, $state, apiService){
 
     var params = $state.params;
 
-    console.log("In questionController", "params", params);
-
-    var questionNumber = params['questionNumber'];
+    $scope.questionNumber = params['questionNum'];
 
     $scope.init = function(){
 
         // Fetch question from the server.
 
-        // Load the question data from the server into a timeline object.
+        apiService.getTimeline($scope.questionNumber, function(timeline){
 
-        // Use the SVG factory to render the timeline to the screen.
+            $scope.timeline = timeline;
 
-        // Capture response on "Done" button click
+            // Use the SVG factory to render the timeline to the screen.
+            var fact = new SVGTimelineFactory("svg", 50, 100, 700, 12, timeline.hours);
+            fact.renderTimeline($scope.timeline);
 
-    }
+        });
+
+    };
+
+    $scope.doneQuestion = function(){
+
+        // submit the response to the server.
+
+        apiService.sendResponse($scope.questionNumber, $scope.timeline, 
+            $rootScope.username, $rootScope.password, 
+            function(d){
+
+                if(d.next){
+                    $state.go("question", {questionNum : d.next})
+                }else{
+                    // TODO: Make new "end" state page.
+                    $state.go("exit")
+                }
+            }
+        );
+
+        // get the next question number.
+
+        // advance to the next question.
+
+    };
+
+    $scope.init();
 
 }

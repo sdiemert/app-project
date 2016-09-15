@@ -9,9 +9,17 @@
         </p>
 
         <p style="font-style: italic">
-            Adjust the interval sliders to indicate that third dose should be taken between 60 and 70 hours. Press "Done" when you are finished.
+            Adjust the interval slides to indicate when the range of time for the next dose. Press "Done" when you are finished.
         </p>
         <svg id="svg" style="width:800px;height:200px;-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"></svg>
+
+        <div class="row">
+            <div class="twelve columns">
+                <button class="button-primary" ng-click="doneQuestion();">Done</button>
+                <button class='error u-pull-right' ng-click="exitStudy('question-'+questionNumber);">Exit Study</button>
+            </div>
+        </div>
+
 
     </div>
 </div>

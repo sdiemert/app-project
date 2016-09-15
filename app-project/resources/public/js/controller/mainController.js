@@ -49,4 +49,20 @@
     $scope.showAuthError = function(){
         $("#login-auth-error").show();
     };
+
+    /**
+     * The participant wishes to exit the study.
+     * Must double check with a pop-up that they are sure.
+     */
+    $scope.exitStudy = function(status){
+
+        var resp = confirm("Are you sure you would like to exit the study? You will be unable to continue later.");
+
+        if(resp === true){
+            apiService.exitStudy($rootScope.username, $rootScope.password, status, function(err){
+                $state.go("exit");
+            });
+        }
+
+    };
 }
