@@ -10,11 +10,17 @@ function questionController ($scope, $rootScope, $state, apiService){
 
         apiService.getTimeline($scope.questionNumber, function(timeline){
 
-            $scope.timeline = timeline;
+            if(!timeline){
+                $state.go("end");
+            }else{
 
-            // Use the SVG factory to render the timeline to the screen.
-            var fact = new SVGTimelineFactory("svg", 50, 100, 700, 12, timeline.hours);
-            fact.renderTimeline($scope.timeline);
+                $scope.timeline = timeline;
+
+                // Use the SVG factory to render the timeline to the screen.
+                var fact = new SVGTimelineFactory("svg", 50, 100, 700, 12, timeline.hours);
+                fact.renderTimeline($scope.timeline);
+
+            }
 
         });
 

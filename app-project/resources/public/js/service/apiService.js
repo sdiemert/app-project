@@ -137,6 +137,7 @@ function apiService($http, $base64){
             cb(new SliderTimeline(resp.data.hours, events, resp.data.rx, resp.data.description));
 
         }, function error(resp){
+            console.log("Got error response back", resp);
             cb(null);
         });
 
@@ -167,7 +168,7 @@ function apiService($http, $base64){
         }).then(function success(resp){
             cb(resp.data);
         }, function error(resp){
-            cb("error");
+            cb(null);
         });
 
     }
