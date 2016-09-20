@@ -8,23 +8,24 @@ function questionController ($scope, $rootScope, $state, apiService){
 
         // Fetch question from the server.
 
-        apiService.getTimeline($scope.questionNumber, function(timeline){
+        apiService.getTimeline($rootScope.username, $rootScope.password, $scope.questionNumber,
+            function(timeline){
 
-            if(!timeline){
-                $state.go("end");
-            }else{
+                if(!timeline){
+                    $state.go("end");
+                }else{
 
-                $scope.timeline = timeline;
+                    $scope.timeline = timeline;
 
-                // Use the SVG factory to render the timeline to the screen.
-                var fact = new SVGTimelineFactory("svg", 50, 100, 700, 12, timeline.hours);
-                fact.renderTimeline($scope.timeline);
-
-                $(window).on("resize", function(){
+                    // Use the SVG factory to render the timeline to the screen.
+                    var fact = new SVGTimelineFactory("svg", 50, 100, 700, 12, timeline.hours);
                     fact.renderTimeline($scope.timeline);
-                });
 
-            }
+                    $(window).on("resize", function(){
+                        fact.renderTimeline($scope.timeline);
+                    });
+    
+                }
 
         });
 

@@ -146,10 +146,14 @@ function apiService($http, $base64){
      * @param id {number} the id of the timeline to fetch.
      * @param cb {function} called when complete with the timeline as the parameter or null.
      */
-    this.getTimeline = function(id, cb){
+    this.getTimeline = function(user, pass, id, cb){
 
         $http({
             method : "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                "Authorization" : makeAuth(user, pass)
+            },
             url : "/api/timeline/"+id
         }).then(function success(resp){
 
