@@ -28,8 +28,6 @@ function questionController ($scope, $rootScope, $state, apiService){
 
         });
 
-
-
     };
 
     $scope.doneQuestion = function(){
@@ -47,10 +45,6 @@ function questionController ($scope, $rootScope, $state, apiService){
                 }
             }
         );
-
-        // get the next question number.
-
-        // advance to the next question.
 
     };
 

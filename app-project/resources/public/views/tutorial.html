@@ -4,23 +4,28 @@
         <div class="" id="tutorial-control" ng-controller="svgController">
             <h4>Study Tutorial</h4>
             <p>
-                The following is a practice question to familiarize you with the user interface for this study.
+                The following is a <em>practice</em> question to familiarize you with the user interface for this study.
                 Subsequent study questions will use a similar format.
             </p>
 
             <p>
-                The timeline below represents a hypothetical patient medication taking behavior.
-                The axis represents time, shown in hours since the start of the prescription.
-                Points in time at which the patient consumed their medication are shown as dots.
+                The timeline below represents a hypothetical patient's medication taking behavior.
+                The axis represents time, shown in hours since the beginning of the prescription (when it was issued).
+                Points in time at which the patient consumed their medication are shown as dots with the dose shown directly above.
             </p>
 
             <p>
-                Your task is to indicate when the patient may take the next dose of medication.
-                You do this by indicating a range of permissible administration times.
+                Your task is to indicate a range of time when the patient may administer the <b>next</b> dose of medication.
+                I.e. if the next dose was administered within that range you (as their physician) would consider it to be "adherent".
+            </p>
+
+            <p>
+                Consider the following prescription: <span style="font-style:italic">take blueberricillin 10 mg once daily</span>.
+                Suppose that you think the next dose could be taken been 50 hours and 70 hours.
             </p>
 
             <p style="font-style: italic">
-                Adjust the interval sliders to indicate that third dose should be taken between 60 and 70 hours. Press "Done" when you are finished.
+                Adjust the interval sliders to indicate that third dose should be taken between 50 and 70 hours. Press "Done" when you are finished.
             </p>
             <svg id="svg" style="width:800px;height:200px;-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"></svg>
 
@@ -39,7 +44,7 @@
                 var scope = angular.element($("#tutorial-control")).scope();
                 var timeline = scope.timeline;
 
-                if(timeline.left === 60 && timeline.right === 70){
+                if(timeline.left === 50 && timeline.right === 70){
 
                     console.log("advancing to 'begin' state...");
 
