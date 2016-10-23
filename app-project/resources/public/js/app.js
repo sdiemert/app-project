@@ -57,23 +57,4 @@ app.controller("svgController", ["$scope", "$rootScope", "$state", "apiService",
 app.controller("questionController", ["$scope", "$rootScope", "$state", "apiService", questionController]);
 
 
-// TODO: UNCOMMENT ME - frustrating to have in dev mode.
-app.run(function($rootScope, $state, $location){
-
-    $rootScope.$on("$stateChangeStart", function(event, toState, params, fromState){
-
-        console.log("authorized: "+ $rootScope.authorized);
-        console.log("toState: "+ toState.name);
-
-        if(!$rootScope.authorized && toState.name !== "landing"){
-            console.log("attempting to go to state: landing");
-            $state.go("landing");
-            event.preventDefault();
-            return;
-        }
-    });
-
-});
-
-
 

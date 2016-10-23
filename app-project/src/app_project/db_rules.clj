@@ -8,18 +8,6 @@
   ([sysName] (def GTSystem (gts (symbol sysName) {}))
 
    (def GTSystem
-     (rule 'authenticate? ['user 'pass]
-           {:read (pattern
-                    (node 'n1 {:asserts {:kind "'user'":name "'&user'"}})
-                    (node 'n2 {:asserts {:kind "'password'" :pass"'&pass'"}})
-                    (edge 'e1 {:src 'n1 :tar 'n2 :label "password"})
-                    )
-            }
-           GTSystem
-           )
-     )
-
-   (def GTSystem
      (rule 'is-role? ['user 'role]
            {:read (pattern
                     (node 'n1 {:asserts {:kind "'user'":name "'&user'" :role "'&role'"}})
@@ -30,16 +18,10 @@
      )
 
    (def GTSystem
-     (rule 'make-user! ['user 'pass 'role]
-           {:read (pattern
-                    (node 'rootNode {:asserts {:kind "'root'"}})
-                    )
-
-            :create (pattern
+     (rule 'make-user! ['user 'role]
+           {:create (pattern
                       (node 'n1 {:asserts {:kind "'user'":name "'&user'" :role "'&role'"}})
-                      (node 'n2 {:asserts {:kind "'password'" :pass"'&pass'"}})
                       (node 'n3 {:asserts {:kind "'consent'" :value "'null'"}})
-                      (edge 'e1 {:src 'n1 :tar 'n2 :label "password"})
                       (edge 'e2 {:src 'n1 :tar 'n3 :label "consent"})
                     )
             }
@@ -62,26 +44,8 @@
      (rule 'delete-user! ['user]
            {:read (pattern
                       (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
-                      (node 'n2 {:asserts {:kind "'password'"}})
-                      (edge 'e1 {:src 'n1 :tar 'n2 :label "password"})
                     )
-            :delete ['n1 'n2 'e1]
-            }
-           GTSystem)
-     )
-
-   (def GTSystem
-     (rule 'update-password! ['user 'old 'new]
-           {:read (pattern
-                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
-                    (node 'n2 {:asserts {:kind "'password'" :pass "'&old'"}})
-                    (edge 'e1 {:src 'n1 :tar 'n2 :label "password"})
-                    )
-            :create  (pattern
-                       (node 'n3 {:asserts {:kind "'password'" :pass "'&new'"}})
-                       (edge 'e2 {:src 'n1 :tar 'n3 :label "password"})
-                       )
-            :delete ['n2]
+            :delete ['n1]
             }
            GTSystem)
      )

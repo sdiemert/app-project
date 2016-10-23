@@ -6,31 +6,20 @@
             [app-project.middleware :as middleware]
             [ring.middleware.basic-authentication :as auth]
             [ring.middleware.logger :as logger]
+            [ring.middleware.session :as session]
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
             )
   )
 
-(defroutes public-api-routes
-           (POST "/auth" [] handlers/auth-user-http)
-           )
-
 (defroutes user-routes
            (GET "/" [] handlers/default)
+           (GET "/key" [] handlers/get-key)
            (POST "/consent" [] handlers/consent)
            (POST "/exit"     [] handlers/exit-study)
            (POST "/done"     [] handlers/done-study)
            (POST "/question/:qid" [] handlers/question-response)
            (GET  "/timeline/:id" [] handlers/get-timeline)
            )
-
-(defroutes admin-routes
-           (POST    "/user"                   [] handlers/make-user)
-           (DELETE  "/user/:user-id"          [] handlers/remove-user)
-           (POST    "/user/:user-id/password" [] handlers/update-password)
-           (GET     "/user"                   [] handlers/fetch-users)
-           (GET     "/user/:user-id"          [] handlers/fetch-user)
-           )
-
 
 (defroutes public-routes
 
@@ -43,13 +32,7 @@
            )
 
 (def app (-> (routes
-               (context "/api" []
-                        public-api-routes
-                        (-> user-routes (wrap-routes auth/wrap-basic-authentication handlers/auth))
-                        (context "/admin" []
-                          (-> admin-routes (wrap-routes auth/wrap-basic-authentication handlers/admin-auth))
-                          )
-                 )
+               (context "/api" [] user-routes)
                public-routes ; routes accessible to the public.
                )
              (logger/wrap-with-logger)
