@@ -20,3 +20,15 @@
     border:1px solid #89ff87;
     background-color: #cfffd4;
 }
+
+.col-spacer{
+    width:100px;
+}
+
+.row-stripe{
+    background-color: #bbd6f0;
+}
+
+td:first-child {
+    padding-left:10px !important;
+}
