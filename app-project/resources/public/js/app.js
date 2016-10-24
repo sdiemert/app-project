@@ -23,14 +23,9 @@ app.config(function($stateProvider, $urlRouterProvider){
             templateUrl: "views/consent.html",
             controller:"consentController"
         })
-        .state('surveyBefore', {
-            url: "/surveyBefore",
-            templateUrl: "views/survey-before.html",
-            controller:"surveyController"
-        })
-        .state('surveyAfter', {
-            url: "/surveyAfter",
-            templateUrl: "views/survey-after.html",
+        .state('survey', {
+            url: "/survey/{questionNum:int}",
+            templateUrl: "views/survey.html",
             controller:"surveyController"
         })
         .state('tutorial', {
@@ -65,7 +60,7 @@ app.controller("consentController", ["$scope", "$rootScope", "$state","apiServic
 app.controller("tutorialController", ["$scope", "$rootScope", "$state","apiService", tutorialController]);
 app.controller("svgController", ["$scope", "$rootScope", "$state", "apiService", svgController]);
 app.controller("questionController", ["$scope", "$rootScope", "$state", "apiService", questionController]);
-app.controller("surveyController", ["$scope","$rootScope", "$state", "apiService", landingController]);
+app.controller("surveyController", ["$scope","$rootScope", "$state", "apiService", surveyController]);
 
 
 // TODO: Uncomment me!

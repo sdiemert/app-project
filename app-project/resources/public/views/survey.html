@@ -1,9 +1,10 @@
 <div class="row" ng-controller="surveyController" xmlns="http://www.w3.org/1999/html">
 
     <div class="twelve columns">
-        <h5>Who are you?</h5>
 
-        <div class="row">
+        <h5 id="sect-title-1" style="display:none;">Who are you?</h5>
+
+        <div class="row" id="q1" style="display:none;">
             <div class="six columns">
                 <form>
                     <label for="q1-input">What best describes your profession/role?</label>
@@ -21,7 +22,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="q2" style="display:none;">
             <div class="six columns">
                 <form>
                     <label for="q2-input">How long have you been practicing medicine for?</label>
@@ -35,7 +36,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="q3" style="display:none;">
             <div class="eight columns">
                 <form>
                     <label for="q3-input">What best describes your area of practice?</label>
@@ -50,7 +51,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row" id="q4" style="display:none;">
             <div class="six columns">
                 <form>
                     <label for="q4-input">What is your gender?</label>
@@ -63,11 +64,9 @@
             </div>
         </div>
 
-        <hr>
+        <h5 id="sect-title-2" style="display:none;">What do you think about medication adherence?</h5>
 
-        <h5>What do you think about medication adherence?</h5>
-
-        <div class="row">
+        <div class="row" id="q5" style="display:none;">
             <div class="six columns">
                 <form>
                     <label for="q5-input">How do you define medication adherence?</label>
@@ -76,7 +75,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="q6" style="display:none;">
             <div class="eight columns">
                 <form>
                     <label for="q6-input">In your practice to what <span style="font-style: italic">degree</span> is medication adherence a concern?</label>
@@ -92,7 +91,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row" id="q7" style="display:none;">
             <div class="eight columns">
                 <form>
                     <label for="q7-input">What do you precieve to be the biggest barriers to medication adherence?</label>
@@ -101,7 +100,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="q8" style="display:none;">
             <div class="eight columns">
                 <form>
                     <label for="q8-input">What percentage of patients do you believe understand the <em>implications</em> of non-adherence?</label>
@@ -117,7 +116,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="q9" style="display:none;">
             <div class="eight columns">
                 <form>
                     <label for="q9-input">Do you think patients report their adherence accurately?</label>
@@ -129,7 +128,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="q10" style="display:none;">
             <div class="eight columns">
                 <form>
                     <label for="q10-input">How do you usually measure medication adherence?</label>
@@ -148,7 +147,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="q11" style="display:none;">
             <div class="eight columns">
                 <form>
                     <label for="q11-input">What techniques do you employ to improve/manage patient adherence to medications?</label>
@@ -156,7 +155,7 @@
                 </form>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="q12" style="display:none;">
             <div class="twelve columns">
                 <form>
                     <label for="q12-input">
@@ -253,7 +252,7 @@
 
         <br>
 
-        <div class="row">
+        <div class="row" id="q13" style="display:none;">
             <div class="twelve columns">
                 <form>
                     <label for="q13-input">
@@ -348,10 +347,10 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="twelve columns">
-                <button class="button-primary">Done</button>
+                <button onclick="" id='back-button' class="button-primary">Back</button>
+                <button onclick="" id='next-button' class="button-primary">Next</button>
             </div>
         </div>
 
