@@ -20,7 +20,6 @@
   (let [
         k (str (util/new-uuid))
         r (db/make-user k)
-        ;_ (println k r)
         ]
     (if (not r)
       (resp/status (resp/content-type (resp/response "not completed") "text/plain") 500)
@@ -29,20 +28,19 @@
     )
   )
 
-(defn get-username-from-auth [req]
-  "Fetches the username of the currently authorized user from the
-  basic authentication"
-  (get (get req :basic-authentication) :username)
+(defn get-username-from-req [req]
+  "Fetches the username of the current user from the request"
+  (get (get req :params) :uuid)
   )
 
 (defn consent [req]
   (let [
-        name (get-username-from-auth req)
+        name (get-username-from-req req)
         agree (get (req :body) "consent")
         ts (quot (System/currentTimeMillis) 1000)
         ]
     (if (or (nil? name) (nil? agree))
-      (resp/status (resp/content-type (resp/response "expected body with: { username : XXXX, consent : XXXX}") "text/plain") 400)
+      (resp/status (resp/content-type (resp/response "expected body with: { consent : XXXX}") "text/plain") 400)
       (if (db/consent name agree ts)
         (resp/status (resp/content-type (resp/response "success") "text/plain") 200)
         (resp/status (resp/content-type (resp/response "not completed") "text/plain") 500)
@@ -53,7 +51,7 @@
 
 (defn exit-study [req]
   (let [
-        name (get-username-from-auth req)
+        name (get-username-from-req req)
         status (get (req :body) "exit-status")
         user-data (db/fetch-user name)
         ts (quot (System/currentTimeMillis) 1000)
@@ -70,7 +68,7 @@
 
 (defn done-study [req]
   (let [
-        name (get-username-from-auth req)
+        name (get-username-from-req req)
         user-data (db/fetch-user name)
         ts (quot (System/currentTimeMillis) 1000)
         ]
@@ -87,7 +85,7 @@
 (defn get-timeline [req]
   (let [
         qid (Integer/parseInt ((req :params) :id))
-        name (get-username-from-auth req)
+        name (get-username-from-req req)
         ]
     (if (or (>= qid (count timelines)) (< qid 0))
       (resp/status (resp/content-type (resp/response "question number out of range.") "text/plain") 401)
@@ -105,7 +103,7 @@
   (let
     [
      qid (Integer/parseInt ((req :params) :qid))
-     name (get-username-from-auth req)
+     name (get-username-from-req req)
      lower-resp (get (req :body) "answer-lower")
      upper-resp (get (req :body) "answer-upper")
      ts (quot (System/currentTimeMillis) 1000)

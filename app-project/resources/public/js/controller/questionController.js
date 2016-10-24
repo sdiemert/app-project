@@ -8,7 +8,7 @@ function questionController ($scope, $rootScope, $state, apiService){
 
         // Fetch question from the server.
 
-        apiService.getTimeline($rootScope.username, $rootScope.password, $scope.questionNumber,
+        apiService.getTimeline($rootScope.key, $scope.questionNumber,
             function(timeline){
 
                 if(!timeline){
@@ -36,7 +36,7 @@ function questionController ($scope, $rootScope, $state, apiService){
         // submit the response to the server.
 
         apiService.sendResponse($scope.questionNumber, $scope.timeline, 
-            $rootScope.username, $rootScope.password, 
+            $rootScope.key,
             function(d){
 
                 if(d.next){

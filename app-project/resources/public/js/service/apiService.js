@@ -4,81 +4,40 @@
 
 function apiService($http, $base64){
 
-    /**
-     * Returns the string required for basic authorization 
-     * to be included in an Authorization HTTP header.
-     *
-     * @param user {string}
-     * @param pass {string}
-     * @returns {string} base64 encoded string.
-     */
-    var makeAuth = function(user, pass){
-        return "Basic "+$base64.encode(user+":"+pass);
-    };
 
-    /**
-     * Authenticates the user, checks that username and password are valid.
-     * Access the public auth API route.
-     *
-     * @param user {string} - username to authenticate with
-     * @param pass {string} - password for the username
-     * @param cb {function}
-     */
-    this.auth = function(user, pass, cb){
-        
+    this.getKey = function(cb){
+
         $http({
-            method : "POST",
-            url : "/api/auth",
-            headers : {
-                "Content-Type" : "application/json"
-            },
-            data : {
-                "username" : user,
-                "password" : pass
-            }
+            method : "GET",
+            url : "/api/key"
         }).then(function success(resp){
 
-            console.log("auth success");
-            console.log(resp);
+            console.log(resp.data);
 
-            cb(null);
-
+            cb(resp.data, null);
         }, function error(resp){
-
-            console.log("auth failed");
-            console.log(resp);
-
-            if(resp.status === 400){
-                cb("BAD_REQUEST", null);
-            }else if(resp.status === 401){
-                cb("AUTH_FAILED", null);
-            }else{
-                cb("ERROR", null);
-            }
-            
+            cb(null, "error");
         });
+
     };
 
     /**
      * Makes a request to /api/consent to register whether or not the
      * designated user consents to the study.
      *
-     * @param user
-     * @param pass
-     * @param accept
-     * @param cb
+     * @param uuid {string}
+     * @param accept {boolean}
+     * @param cb {function}
      */
-    this.sendConsent = function(user, pass, accept, cb){
+    this.sendConsent = function(uuid, accept, cb){
 
         $http({
             method : "POST",
-            url : "/api/consent",
+            url : "/api/"+uuid+"/consent",
             headers : {
-                "Content-Type" : "application/json",
-                "Authorization" : makeAuth(user, pass)
+                "Content-Type" : "application/json"
             },
             data : {
-                "username" : user,
                 "consent" : accept
             }
         }).then(function success(resp){
@@ -91,22 +50,20 @@ function apiService($http, $base64){
 
     /**
      * Marks the user as having requested to exit the study.
-     * @param user {string}
-     * @param pass {string}
+     * @param uuid {string}
      * @param status {string,number} denotes the state/status of the app when they exited (e.g. question number).
      * @param cb {function}
      */
-    this.exitStudy = function(user, pass, status, cb){
+    this.exitStudy = function(uuid, status, cb){
 
         $http({
             method : "POST",
-            url : "/api/exit",
+            url : "/api/"+uuid+"/exit",
             headers : {
-                "Content-Type" : "application/json",
-                "Authorization" : makeAuth(user, pass)
+                "Content-Type" : "application/json"
             },
             data : {
-                "username" : user,
+                "username" : uuid,
                 "exit-status" : status
             }
         }).then(function success(resp){
@@ -118,21 +75,19 @@ function apiService($http, $base64){
 
     /**
      * Marks the study as completed.
-     * @param user {string}
-     * @param pass {string}
+     * @param uuid {string}
      * @param cb {function}
      */
-    this.doneStudy = function(user, pass, cb){
+    this.doneStudy = function(uuid, cb){
 
         $http({
             method : "POST",
-            url : "/api/done",
+            url : "/api/"+uuid+"done",
             headers : {
-                "Content-Type" : "application/json",
-                "Authorization" : makeAuth(user, pass)
+                "Content-Type" : "application/json"
             },
             data : {
-                "username" : user
+                "username" : uuid
             }
         }).then(function success(resp){
             cb(null);
@@ -146,15 +101,14 @@ function apiService($http, $base64){
      * @param id {number} the id of the timeline to fetch.
      * @param cb {function} called when complete with the timeline as the parameter or null.
      */
-    this.getTimeline = function(user, pass, id, cb){
+    this.getTimeline = function(uuid, id, cb){
 
         $http({
             method : "GET",
             headers : {
-                "Content-Type" : "application/json",
-                "Authorization" : makeAuth(user, pass)
+                "Content-Type" : "application/json"
             },
-            url : "/api/timeline/"+id
+            url : "/api/"+uuid+"/timeline/"+id
         }).then(function success(resp){
 
             var events = [];
@@ -176,21 +130,19 @@ function apiService($http, $base64){
      * Sends question answer data back to the server
      * @param id {number} the question number
      * @param timeline {SliderTimeline}
-     * @param user {string} username to associate the response to
-     * @param pass {string} the users password
+     * @param uuid {string} username to associate the response to
      * @param cb {function} called when the request is done.
      */
-    this.sendResponse = function(id, timeline, user, pass, cb){
+    this.sendResponse = function(id, timeline, uuid, cb){
 
         $http({
             method : "POST",
-            url : "/api/question/"+id,
+            url : "/api/"+uuid+"/question/"+id,
             headers : {
-                "Content-Type" : "application/json",
-                "Authorization" : makeAuth(user, pass)
+                "Content-Type" : "application/json"
             },
             data : {
-                "username" : user,
+                "username" : uuid,
                 "answer-lower": timeline.left,
                 "answer-upper" : timeline.right
             }

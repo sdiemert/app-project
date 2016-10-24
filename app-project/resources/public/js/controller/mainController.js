@@ -8,28 +8,18 @@
 
     $scope.login = function(){
 
-        apiService.getKey(function(err){
+        apiService.getKey(function(k, err){
 
             if(!err){
-
+                
+                $rootScope.key = k;
                 $state.go("consent");
 
             }else{
 
-                switch(err){
-                    case "AUTH_FAILED":
-                        $scope.showAuthFailed();
-                        break;
-                    case "BAD_REQUEST":
-                        $scope.showAuthError();
-                        break;
-                    case "ERROR":
-                        $scope.showAuthError();
-                        break;
-                    default:
-                        $scope.showAuthError();
-                        break;
-                }
+                console.log("ERROR: no api key");
+                console.log("ERROR: " + err);
+
             }
 
         });
@@ -41,10 +31,14 @@
      */
     $scope.exitStudy = function(status){
 
-        var resp = confirm("Are you sure you would like to exit the study? You will be unable to continue later.");
+        var resp = confirm("Are you sure you would like to exit the study? You will not be able to continue later.");
 
         if(resp === true){
-            $state.go("exit");
+
+            apiService.exitStudy($rootScope.key,status, function(err) {
+                $rootScope.key = null;
+                $state.go("exit");
+            });
         }
 
     };
@@ -55,7 +49,11 @@
 
      */
     $scope.doneStudy = function(){
-        $state.go("end");
+
+        apiService.doneStudy($rootScope.key, function(err) {
+            $rootScope.key = null;
+            $state.go("end");
+        });
     };
 
 

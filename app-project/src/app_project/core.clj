@@ -3,10 +3,7 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults api-defaults]]
             [app-project.handlers :as handlers]
-            [app-project.middleware :as middleware]
-            [ring.middleware.basic-authentication :as auth]
             [ring.middleware.logger :as logger]
-            [ring.middleware.session :as session]
             [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
             )
   )
@@ -14,11 +11,11 @@
 (defroutes user-routes
            (GET "/" [] handlers/default)
            (GET "/key" [] handlers/get-key)
-           (POST "/consent" [] handlers/consent)
-           (POST "/exit"     [] handlers/exit-study)
-           (POST "/done"     [] handlers/done-study)
-           (POST "/question/:qid" [] handlers/question-response)
-           (GET  "/timeline/:id" [] handlers/get-timeline)
+           (POST "/:uuid/consent" [] handlers/consent)
+           (POST "/:uuid/exit"     [] handlers/exit-study)
+           (POST "/:uuid/done"     [] handlers/done-study)
+           (POST "/:uuid/question/:qid" [] handlers/question-response)
+           (GET  "/:uuid/timeline/:id" [] handlers/get-timeline)
            )
 
 (defroutes public-routes

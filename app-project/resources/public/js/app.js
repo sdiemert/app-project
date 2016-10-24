@@ -57,4 +57,19 @@ app.controller("svgController", ["$scope", "$rootScope", "$state", "apiService",
 app.controller("questionController", ["$scope", "$rootScope", "$state", "apiService", questionController]);
 
 
+app.run(function($rootScope, $state, $location){
 
+    $rootScope.$on("$stateChangeStart", function(event, toState, params, fromState){
+
+        console.log("api key: "+ $rootScope.key);
+        console.log("toState: "+ toState.name);
+
+        if(!$rootScope.key && toState.name !== "landing"){
+            console.log("attempting to go to state: landing");
+            $state.go("landing");
+            event.preventDefault();
+            return;
+        }
+    });
+
+});
