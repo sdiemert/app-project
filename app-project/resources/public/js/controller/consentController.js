@@ -1,5 +1,14 @@
 function consentController ($scope, $rootScope, $state, apiService){
 
+    $scope.init = function(){
+
+        if($rootScope.key === null){
+            $state.go("landing");
+            return;
+        }
+
+    };
+
     $scope.consentAgree = function(){
 
         console.log("consentController.consentAgree()");
@@ -31,5 +40,7 @@ function consentController ($scope, $rootScope, $state, apiService){
         
         $state.go("landing");
     };
+
+    $scope.init();
 
 }

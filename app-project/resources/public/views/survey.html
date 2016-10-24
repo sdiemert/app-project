@@ -2,13 +2,11 @@
 
     <div class="twelve columns">
 
-        <h5 id="sect-title-1" style="display:none;">Who are you?</h5>
-
-        <div class="row" id="q1" style="display:none;">
-            <div class="six columns">
+        <div class="row" id="q0" style="display:none;">
+            <div class="six columns offset-by-three columns">
                 <form>
-                    <label for="q1-input">What best describes your profession/role?</label>
-                    <select class="u-full-width" id="q1-input">
+                    <label for="q0-input">What best describes your profession/role?</label>
+                    <select ng-model="response" class="u-full-width" id="q0-input">
                         <option value="MD-R">Resident Physician</option>
                         <option value="MD">Physician</option>
                         <option value="NP">Nurse Practitioner</option>
@@ -22,11 +20,11 @@
             </div>
         </div>
 
-        <div class="row" id="q2" style="display:none;">
-            <div class="six columns">
+        <div class="row" id="q1" style="display:none;">
+            <div class="six columns offset-by-three columns">
                 <form>
-                    <label for="q2-input">How long have you been practicing medicine for?</label>
-                    <select class="u-full-width" id="q2-input">
+                    <label for="q1-input">How long have you been practicing medicine for?</label>
+                    <select ng-model="response" class="u-full-width" id="q1-input">
                         <option value="R">I am a resident</option>
                         <option value="lt5">Less than 5 years</option>
                         <option value="lt10">Between 5 and 10 years</option>
@@ -36,11 +34,11 @@
             </div>
         </div>
 
-        <div class="row" id="q3" style="display:none;">
-            <div class="eight columns">
+        <div class="row" id="q2" style="display:none;">
+            <div class="eight columns offset-by-two columns">
                 <form>
-                    <label for="q3-input">What best describes your area of practice?</label>
-                    <select class="u-full-width" id="q3-input">
+                    <label for="q2-input">What best describes your area of practice?</label>
+                    <select ng-model="response" class="u-full-width" id="q2-input">
                         <option value="family-office">Family medicine with office practice (may include hospital privileges)</option>
                         <option value="family-hospital">Family medicine with hospital only practice</option>
                         <option value="specialist-office">Specialist with office practice (may include hospital privileges)</option>
@@ -51,11 +49,11 @@
         </div>
 
 
-        <div class="row" id="q4" style="display:none;">
-            <div class="six columns">
+        <div class="row" id="q3" style="display:none;">
+            <div class="six columns offset-by-three columns">
                 <form>
-                    <label for="q4-input">What is your gender?</label>
-                    <select class="u-full-width" id="q4-input">
+                    <label for="q3-input">What is your gender?</label>
+                    <select ng-model="response" class="u-full-width" id="q3-input">
                         <option value="female">female</option>
                         <option value="male">male</option>
                         <option value="other">other</option>
@@ -64,22 +62,20 @@
             </div>
         </div>
 
-        <h5 id="sect-title-2" style="display:none;">What do you think about medication adherence?</h5>
-
-        <div class="row" id="q5" style="display:none;">
-            <div class="six columns">
+        <div class="row" id="q4" style="display:none;">
+            <div class="eight columns offset-by-two columns">
                 <form>
-                    <label for="q5-input">How do you define medication adherence?</label>
-                    <textarea id="q5-input" row="4" cols="80"></textarea>
+                    <label for="q4-input">How do you define medication adherence?</label>
+                    <textarea ng-model="response" id="q4-input" rows="4" cols="80"></textarea>
                 </form>
             </div>
         </div>
 
-        <div class="row" id="q6" style="display:none;">
-            <div class="eight columns">
+        <div class="row" id="q5" style="display:none;">
+            <div class="eight columns offset-by-two columns">
                 <form>
-                    <label for="q6-input">In your practice to what <span style="font-style: italic">degree</span> is medication adherence a concern?</label>
-                    <select class="u-full-width" id="q6-input">
+                    <label for="q5-input">In your practice to what <span style="font-style: italic">degree</span> is medication adherence a concern?</label>
+                    <select ng-model="response" class="u-full-width" id="q5-input">
                         <option value="not">Not a concern for any patients</option>
                         <option value="minority">A concern for a <span style="font-style: italic">minority</span> of patients</option>
                         <option value="half">A concern for a <span style="font-style: italic">half</span> of patients</option>
@@ -91,20 +87,20 @@
         </div>
 
 
-        <div class="row" id="q7" style="display:none;">
-            <div class="eight columns">
+        <div class="row" id="q6" style="display:none;">
+            <div class="eight columns offset-by-two columns">
                 <form>
-                    <label for="q7-input">What do you precieve to be the biggest barriers to medication adherence?</label>
-                    <textarea id="q7-input" row="4" cols="80"></textarea>
+                    <label for="q6-input">What do you precieve to be the biggest barriers to medication adherence?</label>
+                    <textarea ng-model="response" id="q6-input" rows="4" cols="80"></textarea>
                 </form>
             </div>
         </div>
 
-        <div class="row" id="q8" style="display:none;">
-            <div class="eight columns">
+        <div class="row" id="q7" style="display:none;">
+            <div class="eight columns offset-by-two columns">
                 <form>
-                    <label for="q8-input">What percentage of patients do you believe understand the <em>implications</em> of non-adherence?</label>
-                    <select class="u-full-width" id="q8-input">
+                    <label for="q7-input">What percentage of patients do you believe understand the <em>implications</em> of non-adherence?</label>
+                    <select ng-model="response" class="u-full-width" id="q7-input">
                         <option value="100">100% understand the implications of non-adherence</option>
                         <option value="75-99">75% - 99%</option>
                         <option value="50-74">50% - 74%</option>
@@ -116,11 +112,11 @@
             </div>
         </div>
 
-        <div class="row" id="q9" style="display:none;">
-            <div class="eight columns">
+        <div class="row" id="q8" style="display:none;">
+            <div class="eight columns offset-by-two columns">
                 <form>
-                    <label for="q9-input">Do you think patients report their adherence accurately?</label>
-                    <select class="u-full-width" id="q9-input">
+                    <label for="q8-input">Do you think patients report their adherence accurately?</label>
+                    <select ng-model="response" class="u-full-width" id="q8-input">
                         <option value="yes">yes, they report accurately</option>
                         <option value="no">no, they do <em>not</em> report accurately</option>
                     </select>
@@ -128,11 +124,11 @@
             </div>
         </div>
 
-        <div class="row" id="q10" style="display:none;">
-            <div class="eight columns">
+        <div class="row" id="q9" style="display:none;">
+            <div class="eight columns offset-by-two columns">
                 <form>
-                    <label for="q10-input">How do you usually measure medication adherence?</label>
-                    <select class="u-full-width" id="q10-input">
+                    <label for="q9-input">How do you usually measure medication adherence?</label>
+                    <select ng-model="response" class="u-full-width" id="q9-input" ng-change="showOther(9)">
                         <option value="ask-patient">ask the patient</option>
                         <option value="pill-count">pill count (bottle)</option>
                         <option value="rx-dates-records">check prescription dates in records</option>
@@ -141,24 +137,24 @@
                         <option value="other">other (please specify)</option>
                     </select>
 
-                    <input type="text" class="u-full-width" placeholder="other (please specify)" id="q10-other" style="display:none;"/>
+                    <input type="text" class="u-full-width" placeholder="please specify" id="q9-other" style="display:none;"/>
 
                 </form>
             </div>
         </div>
 
-        <div class="row" id="q11" style="display:none;">
-            <div class="eight columns">
+        <div class="row" id="q10" style="display:none;">
+            <div class="eight columns offset-by-two columns">
                 <form>
-                    <label for="q11-input">What techniques do you employ to improve/manage patient adherence to medications?</label>
-                    <textarea id="q11-input" row="4" cols="80"></textarea>
+                    <label for="q10-input">What techniques do you employ to improve/manage patient adherence to medications?</label>
+                    <textarea ng-model="response" id="q10-input" row="4" cols="80"></textarea>
                 </form>
             </div>
         </div>
-        <div class="row" id="q12" style="display:none;">
+        <div class="row" id="q11" style="display:none;">
             <div class="twelve columns">
                 <form>
-                    <label for="q12-input">
+                    <label for="q11-input">
                         What is the <em>likelihood</em> for a patient to be non-adherent to the following medications ?
                     </label>
 
@@ -174,74 +170,74 @@
                         <tbody>
                             <tr>
                                 <td>Short course of systemic (oral) antibiotics</td>
-                                <td> <input type="radio" name="q12-1" value="5" /></td>
-                                <td> <input type="radio" name="q12-1" value="4" /></td>
-                                <td> <input type="radio" name="q12-1" value="3" /></td>
-                                <td> <input type="radio" name="q12-1" value="2" /></td>
-                                <td> <input type="radio" name="q12-1" value="1" /></td>
+                                <td> <input type="radio" name="q11-1" value="5" /></td>
+                                <td> <input type="radio" name="q11-1" value="4" /></td>
+                                <td> <input type="radio" name="q11-1" value="3" /></td>
+                                <td> <input type="radio" name="q11-1" value="2" /></td>
+                                <td> <input type="radio" name="q11-1" value="1" /></td>
                             </tr>
 
                             <tr class="row-stripe">
                                 <td>Short course of NSAIDs for sprained ankle</td>
-                                <td> <input type="radio" name="q12-2" value="5" /></td>
-                                <td> <input type="radio" name="q12-2" value="4" /></td>
-                                <td> <input type="radio" name="q12-2" value="3" /></td>
-                                <td> <input type="radio" name="q12-2" value="2" /></td>
-                                <td> <input type="radio" name="q12-2" value="1" /></td>
+                                <td> <input type="radio" name="q11-2" value="5" /></td>
+                                <td> <input type="radio" name="q11-2" value="4" /></td>
+                                <td> <input type="radio" name="q11-2" value="3" /></td>
+                                <td> <input type="radio" name="q11-2" value="2" /></td>
+                                <td> <input type="radio" name="q11-2" value="1" /></td>
                             </tr>
 
                             <tr>
                                 <td>Long-term NSAID for OA</td>
-                                <td> <input type="radio" name="q12-3" value="5" /></td>
-                                <td> <input type="radio" name="q12-3" value="4" /></td>
-                                <td> <input type="radio" name="q12-3" value="3" /></td>
-                                <td> <input type="radio" name="q12-3" value="2" /></td>
-                                <td> <input type="radio" name="q12-3" value="1" /></td>
+                                <td> <input type="radio" name="q11-3" value="5" /></td>
+                                <td> <input type="radio" name="q11-3" value="4" /></td>
+                                <td> <input type="radio" name="q11-3" value="3" /></td>
+                                <td> <input type="radio" name="q11-3" value="2" /></td>
+                                <td> <input type="radio" name="q11-3" value="1" /></td>
                             </tr>
 
                             <tr class="row-stripe">
                                 <td>Opioids for chronic back pain</td>
-                                <td> <input type="radio" name="q12-4" value="5" /></td>
-                                <td> <input type="radio" name="q12-4" value="4" /></td>
-                                <td> <input type="radio" name="q12-4" value="3" /></td>
-                                <td> <input type="radio" name="q12-4" value="2" /></td>
-                                <td> <input type="radio" name="q12-4" value="1" /></td>
+                                <td> <input type="radio" name="q11-4" value="5" /></td>
+                                <td> <input type="radio" name="q11-4" value="4" /></td>
+                                <td> <input type="radio" name="q11-4" value="3" /></td>
+                                <td> <input type="radio" name="q11-4" value="2" /></td>
+                                <td> <input type="radio" name="q11-4" value="1" /></td>
                             </tr>
 
                             <tr>
                                 <td>SSRIs</td>
-                                <td> <input type="radio" name="q12-5" value="5" /></td>
-                                <td> <input type="radio" name="q12-5" value="4" /></td>
-                                <td> <input type="radio" name="q12-5" value="3" /></td>
-                                <td> <input type="radio" name="q12-5" value="2" /></td>
-                                <td> <input type="radio" name="q12-5" value="1" /></td>
+                                <td> <input type="radio" name="q11-5" value="5" /></td>
+                                <td> <input type="radio" name="q11-5" value="4" /></td>
+                                <td> <input type="radio" name="q11-5" value="3" /></td>
+                                <td> <input type="radio" name="q11-5" value="2" /></td>
+                                <td> <input type="radio" name="q11-5" value="1" /></td>
                             </tr>
 
                             <tr class="row-stripe">
                                 <td>Long-term benzodiazepines</td>
-                                <td> <input type="radio" name="q12-6" value="5" /></td>
-                                <td> <input type="radio" name="q12-6" value="4" /></td>
-                                <td> <input type="radio" name="q12-6" value="3" /></td>
-                                <td> <input type="radio" name="q12-6" value="2" /></td>
-                                <td> <input type="radio" name="q12-6" value="1" /></td>
+                                <td> <input type="radio" name="q11-6" value="5" /></td>
+                                <td> <input type="radio" name="q11-6" value="4" /></td>
+                                <td> <input type="radio" name="q11-6" value="3" /></td>
+                                <td> <input type="radio" name="q11-6" value="2" /></td>
+                                <td> <input type="radio" name="q11-6" value="1" /></td>
                             </tr>
 
                             <tr>
                                 <td>Long-term beta-blocker for hypertension</td>
-                                <td> <input type="radio" name="q12-7" value="5" /></td>
-                                <td> <input type="radio" name="q12-7" value="4" /></td>
-                                <td> <input type="radio" name="q12-7" value="3" /></td>
-                                <td> <input type="radio" name="q12-7" value="2" /></td>
-                                <td> <input type="radio" name="q12-7" value="1" /></td>
+                                <td> <input type="radio" name="q11-7" value="5" /></td>
+                                <td> <input type="radio" name="q11-7" value="4" /></td>
+                                <td> <input type="radio" name="q11-7" value="3" /></td>
+                                <td> <input type="radio" name="q11-7" value="2" /></td>
+                                <td> <input type="radio" name="q11-7" value="1" /></td>
                             </tr>
 
                             <tr class="row-stripe">
                                 <td>Oral contraception (Progestogens and Estrogens in combination)</td>
-                                <td> <input type="radio" name="q12-8" value="5" /></td>
-                                <td> <input type="radio" name="q12-8" value="4" /></td>
-                                <td> <input type="radio" name="q12-8" value="3" /></td>
-                                <td> <input type="radio" name="q12-8" value="2" /></td>
-                                <td> <input type="radio" name="q12-8" value="1" /></td>
+                                <td> <input type="radio" name="q11-8" value="5" /></td>
+                                <td> <input type="radio" name="q11-8" value="4" /></td>
+                                <td> <input type="radio" name="q11-8" value="3" /></td>
+                                <td> <input type="radio" name="q11-8" value="2" /></td>
+                                <td> <input type="radio" name="q11-8" value="1" /></td>
                             </tr>
                         </tbody>
                     </table>
@@ -252,10 +248,10 @@
 
         <br>
 
-        <div class="row" id="q13" style="display:none;">
+        <div class="row" id="q12" style="display:none;">
             <div class="twelve columns">
                 <form>
-                    <label for="q13-input">
+                    <label for="q12-input">
                         What is the <em>potential risk of harm</em> if a patient is non-adherent to the following medications ?
                     </label>
 
@@ -271,74 +267,74 @@
                         <tbody>
                         <tr>
                             <td>Short course of systemic (oral) antibiotics</td>
-                            <td> <input type="radio" name="q13-1" value="5" /></td>
-                            <td> <input type="radio" name="q13-1" value="4" /></td>
-                            <td> <input type="radio" name="q13-1" value="3" /></td>
-                            <td> <input type="radio" name="q13-1" value="2" /></td>
-                            <td> <input type="radio" name="q13-1" value="1" /></td>
+                            <td> <input type="radio" name="q12-1" value="5" /></td>
+                            <td> <input type="radio" name="q12-1" value="4" /></td>
+                            <td> <input type="radio" name="q12-1" value="3" /></td>
+                            <td> <input type="radio" name="q12-1" value="2" /></td>
+                            <td> <input type="radio" name="q12-1" value="1" /></td>
                         </tr>
 
                         <tr class="row-stripe">
                             <td>Short course of NSAIDs for sprained ankle</td>
-                            <td> <input type="radio" name="q13-2" value="5" /></td>
-                            <td> <input type="radio" name="q13-2" value="4" /></td>
-                            <td> <input type="radio" name="q13-2" value="3" /></td>
-                            <td> <input type="radio" name="q13-2" value="2" /></td>
-                            <td> <input type="radio" name="q13-2" value="1" /></td>
+                            <td> <input type="radio" name="q12-2" value="5" /></td>
+                            <td> <input type="radio" name="q12-2" value="4" /></td>
+                            <td> <input type="radio" name="q12-2" value="3" /></td>
+                            <td> <input type="radio" name="q12-2" value="2" /></td>
+                            <td> <input type="radio" name="q12-2" value="1" /></td>
                         </tr>
 
                         <tr>
                             <td>Long-term NSAID for OA</td>
-                            <td> <input type="radio" name="q13-3" value="5" /></td>
-                            <td> <input type="radio" name="q13-3" value="4" /></td>
-                            <td> <input type="radio" name="q13-3" value="3" /></td>
-                            <td> <input type="radio" name="q13-3" value="2" /></td>
-                            <td> <input type="radio" name="q13-3" value="1" /></td>
+                            <td> <input type="radio" name="q12-3" value="5" /></td>
+                            <td> <input type="radio" name="q12-3" value="4" /></td>
+                            <td> <input type="radio" name="q12-3" value="3" /></td>
+                            <td> <input type="radio" name="q12-3" value="2" /></td>
+                            <td> <input type="radio" name="q12-3" value="1" /></td>
                         </tr>
 
                         <tr class="row-stripe">
                             <td>Opioids for chronic back pain</td>
-                            <td> <input type="radio" name="q13-4" value="5" /></td>
-                            <td> <input type="radio" name="q13-4" value="4" /></td>
-                            <td> <input type="radio" name="q13-4" value="3" /></td>
-                            <td> <input type="radio" name="q13-4" value="2" /></td>
-                            <td> <input type="radio" name="q13-4" value="1" /></td>
+                            <td> <input type="radio" name="q12-4" value="5" /></td>
+                            <td> <input type="radio" name="q12-4" value="4" /></td>
+                            <td> <input type="radio" name="q12-4" value="3" /></td>
+                            <td> <input type="radio" name="q12-4" value="2" /></td>
+                            <td> <input type="radio" name="q12-4" value="1" /></td>
                         </tr>
 
                         <tr>
                             <td>SSRIs</td>
-                            <td> <input type="radio" name="q13-5" value="5" /></td>
-                            <td> <input type="radio" name="q13-5" value="4" /></td>
-                            <td> <input type="radio" name="q13-5" value="3" /></td>
-                            <td> <input type="radio" name="q13-5" value="2" /></td>
-                            <td> <input type="radio" name="q13-5" value="1" /></td>
+                            <td> <input type="radio" name="q12-5" value="5" /></td>
+                            <td> <input type="radio" name="q12-5" value="4" /></td>
+                            <td> <input type="radio" name="q12-5" value="3" /></td>
+                            <td> <input type="radio" name="q12-5" value="2" /></td>
+                            <td> <input type="radio" name="q12-5" value="1" /></td>
                         </tr>
 
                         <tr class="row-stripe">
                             <td>Long-term benzodiazepines</td>
-                            <td> <input type="radio" name="q13-6" value="5" /></td>
-                            <td> <input type="radio" name="q13-6" value="4" /></td>
-                            <td> <input type="radio" name="q13-6" value="3" /></td>
-                            <td> <input type="radio" name="q13-6" value="2" /></td>
-                            <td> <input type="radio" name="q13-6" value="1" /></td>
+                            <td> <input type="radio" name="q12-6" value="5" /></td>
+                            <td> <input type="radio" name="q12-6" value="4" /></td>
+                            <td> <input type="radio" name="q12-6" value="3" /></td>
+                            <td> <input type="radio" name="q12-6" value="2" /></td>
+                            <td> <input type="radio" name="q12-6" value="1" /></td>
                         </tr>
 
                         <tr>
                             <td>Long-term beta-blocker for hypertension</td>
-                            <td> <input type="radio" name="q13-7" value="5" /></td>
-                            <td> <input type="radio" name="q13-7" value="4" /></td>
-                            <td> <input type="radio" name="q13-7" value="3" /></td>
-                             <td> <input type="radio" name="q13-7" value="2" /></td>
-                            <td> <input type="radio" name="q13-7" value="1" /></td>
+                            <td> <input type="radio" name="q12-7" value="5" /></td>
+                            <td> <input type="radio" name="q12-7" value="4" /></td>
+                            <td> <input type="radio" name="q12-7" value="3" /></td>
+                             <td> <input type="radio" name="q12-7" value="2" /></td>
+                            <td> <input type="radio" name="q12-7" value="1" /></td>
                         </tr>
 
                         <tr class="row-stripe">
                             <td>Oral contraception (Progestogens and Estrogens in combination)</td>
-                            <td> <input type="radio" name="q13-8" value="5" /></td>
-                            <td> <input type="radio" name="q13-8" value="4" /></td>
-                            <td> <input type="radio" name="q13-8" value="3" /></td>
-                            <td> <input type="radio" name="q13-8" value="2" /></td>
-                            <td> <input type="radio" name="q13-8" value="1" /></td>
+                            <td> <input type="radio" name="q12-8" value="5" /></td>
+                            <td> <input type="radio" name="q12-8" value="4" /></td>
+                            <td> <input type="radio" name="q12-8" value="3" /></td>
+                            <td> <input type="radio" name="q12-8" value="2" /></td>
+                            <td> <input type="radio" name="q12-8" value="1" /></td>
                         </tr>
                         </tbody>
                     </table>
@@ -347,15 +343,37 @@
             </div>
         </div>
 
+        <div class="row" id="q13" style="display:none;">
+            <div class="eight columns offset-by-two columns">
+                <form>
+                    <label for="q13-input">Has your concept/definition of medication adherence changed since the start of the study?</label>
+
+                    <select id="q13-input" class="u-full-width" ng-model="response" ng-change="showOther(13)">
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                    </select>
+
+                    <textarea id="q13-other" rows="4" cols="80" placeholder="please specify" style="display: none;"></textarea>
+                </form>
+            </div>
+        </div>
+
+        <div class="row" id="q14" style="display:none;">
+            <div class="eight columns offset-by-two columns">
+                <form>
+                    <label for="q14-input">Do you have any additional comments regarding this study?</label>
+                    <textarea id="q14-input" rows="4" cols="80"></textarea>
+                </form>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="twelve columns">
-                <button onclick="" id='back-button' class="button-primary">Back</button>
-                <button onclick="" id='next-button' class="button-primary">Next</button>
+            <div class="twelve columns" style="text-align: center">
+                <button ng-click="goBack();" id='back-button' class="">Back</button>
+                <button ng-click="goNext();" id='next-button' class="button-primary">Next</button>
             </div>
         </div>
 
     </div>
-
-
 
 </div>

@@ -6,6 +6,11 @@ function questionController ($scope, $rootScope, $state, apiService){
 
     $scope.init = function(){
 
+        if($rootScope.consent !== true){
+            $state.go("consent");
+            return;
+        }
+
         // Fetch question from the server.
 
         apiService.getTimeline($rootScope.key, $scope.questionNumber,
