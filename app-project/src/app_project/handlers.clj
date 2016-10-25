@@ -85,7 +85,7 @@
 
 (defn get-timeline [req]
   (let [
-        qid (str ((req :params) :id))
+        qid (java.lang.Integer/parseInt ((req :params) :id))
         name (get-username-from-req req)
         ]
     (if (or (>= qid (count timelines)) (< qid 0))
@@ -127,7 +127,7 @@
 (defn question-response [req]
   (let
     [
-     qid (Integer/parseInt ((req :params) :qid))
+     qid (java.lang.Integer/parseInt ((req :params) :qid))
      name (get-username-from-req req)
      lower-resp (get (req :body) "answer-lower")
      upper-resp (get (req :body) "answer-upper")

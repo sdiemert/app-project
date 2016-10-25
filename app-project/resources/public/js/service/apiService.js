@@ -82,7 +82,7 @@ function apiService($http, $base64){
 
         $http({
             method : "POST",
-            url : "/api/"+uuid+"done",
+            url : "/api/"+uuid+"/done",
             headers : {
                 "Content-Type" : "application/json"
             },

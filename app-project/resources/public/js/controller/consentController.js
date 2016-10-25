@@ -4,7 +4,6 @@ function consentController ($scope, $rootScope, $state, apiService){
 
         if($rootScope.key === null){
             $state.go("landing");
-            return;
         }
 
     };
@@ -20,7 +19,7 @@ function consentController ($scope, $rootScope, $state, apiService){
                 $state.go("landing");
             }else{
                 $rootScope.consent = true;
-                $state.go("tutorial");
+                $state.go("beginSurvey");
             }
         });
 
@@ -34,7 +33,7 @@ function consentController ($scope, $rootScope, $state, apiService){
 
             $rootScope.key = null;
             $rootScope.consent = false;
-            $state.go("landing");
+            $state.go("exit");
 
         });
         

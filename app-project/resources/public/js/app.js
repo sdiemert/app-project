@@ -41,6 +41,18 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/begin",
             templateUrl: "views/begin.html"
         })
+        .state('beginSurvey', {
+            url: "/beginSurvey",
+            templateUrl: "views/beginSurvey.html"
+        })
+        .state('doneSurvey', {
+            url: "/doneSurvey",
+            templateUrl: "views/doneSurvey.html"
+        })
+        .state('doneTimelines', {
+            url: "/doneTimelines",
+            templateUrl: "views/doneTimelines.html"
+        })
         .state('question', {
             url: "/question/{questionNum:int}",
             templateUrl: "views/question.html",

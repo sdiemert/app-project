@@ -94,7 +94,7 @@ function surveyController ($scope, $rootScope, $state, apiService){
             $scope.fadeOutQuestion($scope.qNums[$scope.questionNum], function(){
 
                 if($scope.questionNum === BEFORE_SURVEY_END){
-                    return $state.go("tutorial");
+                    return $state.go("doneSurvey");
                 }else if($scope.questionNum === AFTER_SURVEY_END){
                     return $state.go("end");
                 }else{

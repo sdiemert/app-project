@@ -47,7 +47,7 @@ function questionController ($scope, $rootScope, $state, apiService){
                 if(d.next){
                     $state.go("question", {questionNum : d.next})
                 }else{
-                    $state.go("end")
+                    $state.go("doneTimelines");
                 }
             }
         );
