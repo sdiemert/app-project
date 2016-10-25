@@ -3,6 +3,7 @@
             [app-project.db :as db]
             [clojure.data.json :as json]
             [app-project.util :as util]
+            [clojure.string :as string]
             )
   )
 
@@ -84,7 +85,7 @@
 
 (defn get-timeline [req]
   (let [
-        qid (Integer/parseInt ((req :params) :id))
+        qid (str ((req :params) :id))
         name (get-username-from-req req)
         ]
     (if (or (>= qid (count timelines)) (< qid 0))
@@ -95,6 +96,30 @@
         (resp/status (resp/content-type (resp/response (timelines qid)) "application/json") 200)
         )
 
+      )
+    )
+  )
+
+(defn survey-response [req]
+  (let
+    [
+     qid (str ((req :params) :qid))
+     name (get-username-from-req req)
+     ts (quot (System/currentTimeMillis) 1000)
+     user-data (db/fetch-user name)
+     answer (string/escape (get (req :body) "answer") {\' "" \; "" \" "" \% "" \& "" \\ ""})
+     other (if (not (nil? (get (req :body) "additional"))) (string/escape (get (req :body) "additional") {\' "" \; "" \" "" \% "" \& "" \\ ""}) nil)
+     ]
+
+    (if (or (nil? qid) (nil? user-data) (nil? answer))
+      (resp/status (resp/content-type (resp/response "invalid request") "text/plain") 400)
+      (if (db/has-already-answered-survey name qid)
+        (resp/status (resp/content-type (resp/response "already have a response for this question from this user") "text/plain") 412)
+        (if (db/record-survey-response name qid ts answer other)
+          (resp/status (resp/content-type (resp/response "success") "text/plain") 200)
+          (resp/status (resp/content-type (resp/response "failed to log response") "text/plain") 500)
+          )
+        )
       )
     )
   )

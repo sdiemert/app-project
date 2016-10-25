@@ -14,6 +14,7 @@
            (POST "/:uuid/consent" [] handlers/consent)
            (POST "/:uuid/exit"     [] handlers/exit-study)
            (POST "/:uuid/done"     [] handlers/done-study)
+           (POST "/:uuid/survey/:qid" [] handlers/survey-response)
            (POST "/:uuid/question/:qid" [] handlers/question-response)
            (GET  "/:uuid/timeline/:id" [] handlers/get-timeline)
            )

@@ -132,7 +132,7 @@ function surveyController ($scope, $rootScope, $state, apiService){
                 }
             }
 
-            async.each(vals, function(d, cb){
+            async.eachSeries(vals, function(d, cb){
                 apiService.sendSurveyResponse(q+"-"+d.s, d.v, null, $rootScope.key, function(err){
                     cb(err)
                 });

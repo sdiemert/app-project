@@ -74,3 +74,11 @@
 (defn has-already-answered [user qid]
   (grape/attempt rules/GTSystem (grape/apl 'already-answered? user (str qid)))
   )
+
+(defn has-already-answered-survey [user qid]
+  (grape/attempt rules/GTSystem (grape/apl 'already-answered-survey? user (str qid)))
+  )
+
+(defn record-survey-response [user qid ts ans oth]
+  (grape/attempt rules/GTSystem (grape/apl 'record-survey-response! user (str qid) (str ts) (str ans) (str oth) ))
+  )

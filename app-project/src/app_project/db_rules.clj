@@ -96,7 +96,18 @@
      (rule 'already-answered? ['user 'qid]
            {:read (pattern
                     (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
-                    (node 'n2 {:asserts {:kind "'response'" :questionNumber "'&qid'"}})
+                    (node 'n2 {:asserts {:kind "'response'"  :type "'timeline'" :questionNumber "'&qid'"}})
+                    (edge 'e1 {:src 'n1 :tar 'n2 :label "response"})
+                    )
+            }
+           GTSystem)
+     )
+
+   (def GTSystem
+     (rule 'already-answered-survey? ['user 'qid]
+           {:read (pattern
+                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                    (node 'n2 {:asserts {:kind "'response'" :type "'survey'" :questionNumber "'&qid'"}})
                     (edge 'e1 {:src 'n1 :tar 'n2 :label "response"})
                     )
             }
@@ -118,6 +129,28 @@
                                    :time "'&ts'"
                                    }
                                 }
+                             )
+                       (edge 'e1 {:src 'n1 :tar 'n2 :label "response"})
+                       )
+            }
+           GTSystem)
+     )
+
+   (def GTSystem
+     (rule 'record-survey-response! ['user 'qid 'ts 'ans 'oth]
+           {:read (pattern
+                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                    )
+            :create  (pattern
+                       (node 'n2 {:asserts
+                                  {:kind "'response'"
+                                   :type "'survey'"
+                                   :questionNumber "'&qid'"
+                                   :answer "'&ans'"
+                                   :additional "'&oth'"
+                                   :time "'&ts'"
+                                   }
+                                  }
                              )
                        (edge 'e1 {:src 'n1 :tar 'n2 :label "response"})
                        )
