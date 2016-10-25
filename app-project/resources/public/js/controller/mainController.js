@@ -51,11 +51,17 @@
     $scope.doneStudy = function(){
 
         apiService.doneStudy($rootScope.key, function(err) {
-            $rootScope.key = null;
-            $rootScope.consent = false;
             $state.go("end");
         });
     };
 
+
+    $scope.sendEmail = function(e, cb){
+
+        apiService.sendEmail($rootScope.key, e, function(err){
+            cb();
+        });
+
+    }
 
 }

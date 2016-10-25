@@ -138,24 +138,39 @@
 
    (def GTSystem
      (rule 'record-survey-response! ['user 'qid 'ts 'ans 'oth]
-           {:read (pattern
-                    (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
-                    )
-            :create  (pattern
-                       (node 'n2 {:asserts
-                                  {:kind "'response'"
-                                   :type "'survey'"
-                                   :questionNumber "'&qid'"
-                                   :answer "'&ans'"
-                                   :additional "'&oth'"
-                                   :time "'&ts'"
-                                   }
+           {:read   (pattern
+                      (node 'n1 {:asserts {:kind "'user'" :name "'&user'"}})
+                      )
+            :create (pattern
+                      (node 'n2 {:asserts
+                                 {:kind           "'response'"
+                                  :type           "'survey'"
+                                  :questionNumber "'&qid'"
+                                  :answer         "'&ans'"
+                                  :additional     "'&oth'"
+                                  :time           "'&ts'"
                                   }
-                             )
-                       (edge 'e1 {:src 'n1 :tar 'n2 :label "response"})
-                       )
+                                 }
+                            )
+                      (edge 'e1 {:src 'n1 :tar 'n2 :label "response"})
+                      )
             }
            GTSystem)
+     )
+
+     (def GTSystem
+       (rule 'draw-email ['em 'ts]
+             {:create  (pattern
+                         (node 'n2 {:asserts
+                                    {:kind "'email'"
+                                     :value "'&em'"
+                                     :time "'&ts'"
+                                     }
+                                    }
+                               )
+                         )
+              }
+             GTSystem)
      )
   )
 )

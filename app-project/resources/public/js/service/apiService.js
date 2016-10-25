@@ -179,8 +179,22 @@ function apiService($http, $base64){
         }, function error(resp){
             cb("ERROR");
         });
-
-
+        
+    };
+    
+    this.sendEmail = function(uuid, email, cb){
+        $http({
+            method : "POST",
+            url : "/api/"+uuid+"/draw",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            data : {email : email}
+        }).then(function success(resp){
+            cb(null);
+        }, function error(resp){
+            cb("ERROR");
+        });
     }
 
 }

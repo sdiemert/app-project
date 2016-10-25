@@ -39,3 +39,8 @@ td:first-child {
 tr.input-error {
     background-color: #ec6f65 !important;
 }
+
+.success-well{
+    background-color: rgba(166, 255, 141, 0.51);
+    border: 1px solid green;
+}

@@ -82,3 +82,8 @@
 (defn record-survey-response [user qid ts ans oth]
   (grape/attempt rules/GTSystem (grape/apl 'record-survey-response! user (str qid) (str ts) (str ans) (str oth) ))
   )
+
+(defn draw-email [em ts]
+  (grape/attempt rules/GTSystem (grape/apl 'draw-email (str em) (str ts)))
+  )
+

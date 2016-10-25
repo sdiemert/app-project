@@ -67,6 +67,23 @@
     )
   )
 
+(defn draw [req]
+  (let [
+        name (get-username-from-req req)
+        user-data (db/fetch-user name)
+        em (string/escape (get (req :body) "email") {\' "" \; "" \" "" \% "" \& "" \\ ""})
+        ts (quot (System/currentTimeMillis) 1000)
+        ]
+    (if (nil? user-data)
+      (resp/status (resp/content-type (resp/response "user not found or invalid status") "text/plain") 204)
+      (if (db/draw-email em ts)
+        (resp/status (resp/content-type (resp/response "successfully logged email") "text/plain") 200)
+        (resp/status (resp/content-type (resp/response "failed to exit study") "text/plain") 500)
+        )
+      )
+    )
+  )
+
 (defn done-study [req]
   (let [
         name (get-username-from-req req)

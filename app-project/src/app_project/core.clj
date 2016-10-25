@@ -16,6 +16,7 @@
            (POST "/:uuid/done"     [] handlers/done-study)
            (POST "/:uuid/survey/:qid" [] handlers/survey-response)
            (POST "/:uuid/question/:qid" [] handlers/question-response)
+           (POST "/:uuid/draw" [] handlers/draw)
            (GET  "/:uuid/timeline/:id" [] handlers/get-timeline)
            )
 
