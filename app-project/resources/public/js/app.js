@@ -75,8 +75,6 @@ app.controller("questionController", ["$scope", "$rootScope", "$state", "apiServ
 app.controller("surveyController", ["$scope","$rootScope", "$state", "apiService", surveyController]);
 
 
-// TODO: Uncomment me!
-/*
 app.run(function($rootScope, $state, $location){
 
     $rootScope.$on("$stateChangeStart", function(event, toState, params, fromState){
@@ -88,9 +86,7 @@ app.run(function($rootScope, $state, $location){
             console.log("attempting to go to state: landing");
             $state.go("landing");
             event.preventDefault();
-            return;
         }
     });
 
 });
-*/

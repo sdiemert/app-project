@@ -8,10 +8,18 @@
 
         <button class="button-primary" onclick="go()">Proceed</button>
 
+        <!-- Scripts -->
+        <script type="text/javascript">
+            window.onbeforeunload = function(){
+                return true;
+            };
+        </script>
+
         <script type="text/javascript">
             function go(){
                 window.location = "/#/question/0";
             }
         </script>
+
     </div>
 </div>
