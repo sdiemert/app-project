@@ -9,6 +9,7 @@ function questionController ($scope, $rootScope, $state, apiService){
         // Fetch question from the server.
 
         apiService.getTimeline($rootScope.key, $scope.questionNumber,
+
             function(timeline){
 
                 if(!timeline){
@@ -24,6 +25,10 @@ function questionController ($scope, $rootScope, $state, apiService){
                     $(window).on("resize", function(){
                         fact.renderTimeline($scope.timeline);
                     });
+
+                    //$("timeline-wrapper").hide();
+
+                    $("#timeline-wrapper").fadeIn();
     
                 }
 
@@ -35,15 +40,14 @@ function questionController ($scope, $rootScope, $state, apiService){
 
         // submit the response to the server.
 
-        apiService.sendResponse($scope.questionNumber, $scope.timeline, 
-            $rootScope.key,
-            function(d){
-
-                if(d.next){
-                    $state.go("question", {questionNum : d.next})
-                }else{
-                    $state.go("doneTimelines");
-                }
+        apiService.sendResponse($scope.questionNumber, $scope.timeline, $rootScope.key, function(d){
+                $("#timeline-wrapper").fadeOut(function(){
+                    if(d.next){
+                        $state.go("question", {questionNum : d.next})
+                    }else{
+                        $state.go("doneTimelines");
+                    }
+                });
             }
         );
 

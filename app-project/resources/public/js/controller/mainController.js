@@ -11,7 +11,6 @@
         apiService.getKey(function(k, err){
 
             if(!err){
-                
                 $rootScope.key = k;
                 $state.go("consent");
 
@@ -37,6 +36,7 @@
 
             apiService.exitStudy($rootScope.key,status, function(err) {
                 $rootScope.key = null;
+                $rootScope.consent = false;
                 $state.go("exit");
             });
         }
@@ -52,6 +52,7 @@
 
         apiService.doneStudy($rootScope.key, function(err) {
             $rootScope.key = null;
+            $rootScope.consent = false;
             $state.go("end");
         });
     };

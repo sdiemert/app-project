@@ -145,7 +145,7 @@ function surveyController ($scope, $rootScope, $state, apiService){
             v = $("#q"+q+"-input :selected").val() || $("#q"+q+"-input").val() ;
             o = $("#q"+q+"-other").val();
 
-            if(v === undefined || v === null || v === "null-answer" || v === "") {
+            if((v === undefined || v === null || v === "null-answer" || v === "") && q !== 14) {
                 return errCb();
             }else if (v === "other" && !o){
                 return errCb();
