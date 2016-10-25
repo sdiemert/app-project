@@ -14,10 +14,11 @@ class Timeline{
 }
 
 class SliderTimeline extends Timeline{
-    constructor(hours, events, rx, description){
+    constructor(hours, events, rx, description, int){
         super(hours, events, rx, description);
 
         this.left = 0;
-        this.right = hours; 
+        this.right = hours;
+        this.interval = int || 12;
     }
 }

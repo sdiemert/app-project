@@ -8,12 +8,18 @@
         <p style="font-style: italic">
             Adjust the interval slides to indicate an adherent range for the next dose of medication. Press "Done" when you are finished.
         </p>
-        <svg id="svg" style="width:800px;height:200px;-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"></svg>
+
+        <div class="row">
+            <div class="twelve columns" style="margin-left:2%;">
+                <svg id="svg" style="width:800px;height:200px;-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;"></svg>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="twelve columns">
-                <button class="button-primary" ng-click="doneQuestion();">Done</button>
-                <button class='error u-pull-right' ng-click="exitStudy('question-'+questionNumber);">Exit Study</button>
+                <button class='error u-pull-let' ng-click="exitStudy('question-'+questionNumber);">Exit Study</button>
+                <button class="button-primary u-pull-right" ng-click="doneQuestion();">Done</button>
             </div>
         </div>
     </div>

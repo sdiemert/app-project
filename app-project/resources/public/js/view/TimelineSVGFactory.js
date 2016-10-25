@@ -35,7 +35,7 @@ class SVGTimelineFactory extends SVGFactory{
     drawTimelineAxis(timeline){
 
         var hours = this._hours;
-        var TICK_SPACING = this._size/ hours;
+        var TICK_SPACING = this._size / hours;
         var TICK_HEIGHT = 5;
 
         // x1, y1, x2, y2
@@ -47,6 +47,10 @@ class SVGTimelineFactory extends SVGFactory{
         // draw ticks
         for(var i = 0; i < hours; i = i + this._interval){
 
+            var days = i / 24;
+
+            var dayHours = i % 24;
+
             var tmpX = this._xOffset + i*TICK_SPACING;
 
             var tickGroup = this._snap.group();
@@ -56,7 +60,11 @@ class SVGTimelineFactory extends SVGFactory{
                     .attr({stroke : "#000000"})
             );
 
-            tickGroup.add(this._snap.text(tmpX - 20, this._yOffset+TICK_HEIGHT*4, i+":00"));
+            if(dayHours === 0){
+                tickGroup.add(this._snap.text(tmpX - 16, this._yOffset+TICK_HEIGHT*4, "day "+days).attr({"font-weight" : "normal", "font-size" : "11px"}));
+            }else{
+                tickGroup.add(this._snap.text(tmpX - 16, this._yOffset+TICK_HEIGHT*4, dayHours+":00").attr({"font-weight" : "normal", "font-size" : "10px"}));
+            }
 
             g.add(tickGroup);
         }
@@ -69,7 +77,7 @@ class SVGTimelineFactory extends SVGFactory{
                 .attr({stroke : "#000000"})
         );
 
-        tickGroup.add(this._snap.text(this._size + this._xOffset - 20, this._yOffset+TICK_HEIGHT*4, hours+":00"));
+        tickGroup.add(this._snap.text(this._size + this._xOffset - 16, this._yOffset+TICK_HEIGHT*4, "day " + hours/24).attr({"font-weight" : "normal", "font-size" : "11px"}));
 
     };
 
@@ -85,6 +93,16 @@ class SVGTimelineFactory extends SVGFactory{
         var mins = Math.floor((f - hours)*60);
 
         return (hours < 10 ? "0"+hours : hours)
+            +":"
+            +(mins < 10 ? "0"+mins : mins);
+    }
+
+    hourFloatToDayTime(f){
+        var hours = Math.floor(f);
+        var hrs = hours % 24;
+        var mins = Math.floor((f - hours)*60);
+
+        return (hrs < 10 ? "0"+hrs : hrs)
             +":"
             +(mins < 10 ? "0"+mins : mins);
     }
@@ -167,10 +185,10 @@ class SVGTimelineFactory extends SVGFactory{
         var rightSlider = this._snap.rect(rightSliderPos , this._yOffset - SLIDER_H/2 - 7, SLIDER_W, SLIDER_H, 5,5)
             .attr({fill :  RIGHT_SLIDER_FILL, stroke : RIGHT_SLIDER_STROKE});
 
-        var leftSliderLabel = this._snap.text(leftSliderPos - SLIDER_W/2, this._yOffset + 35, this.hourFloatToTime(timeline.left))
+        var leftSliderLabel = this._snap.text(leftSliderPos - SLIDER_W/2, this._yOffset + 35, this.hourFloatToDayTime(timeline.left))
             .attr({"font-size" : 12, "display" : "none"});
 
-        var rightSliderLabel = this._snap.text(rightSliderPos - SLIDER_W/2, this._yOffset + 35, this.hourFloatToTime(timeline.right))
+        var rightSliderLabel = this._snap.text(rightSliderPos - SLIDER_W/2, this._yOffset + 35, this.hourFloatToDayTime(timeline.right))
             .attr({"font-size" : 12, "display" : "none"});
 
 
@@ -209,7 +227,7 @@ class SVGTimelineFactory extends SVGFactory{
                     width: rsx - dest
                 });
                 timeline.left = that.pixelsToHours(dest + SLIDER_W/2, that._size, that._xOffset, that._hours);
-                leftSliderLabel.attr({x : dest - SLIDER_W/2, text : that.hourFloatToTime(timeline.left)});
+                leftSliderLabel.attr({x : dest - SLIDER_W/2, text : that.hourFloatToDayTime(timeline.left)});
             }
 
         };
@@ -229,7 +247,7 @@ class SVGTimelineFactory extends SVGFactory{
                     width : (x - svgLeft) - lsx
                 });
                 timeline.right = that.pixelsToHours(dest + SLIDER_W/2, that._size, that._xOffset, that._hours);
-                rightSliderLabel.attr({x : dest - SLIDER_W/2, text : that.hourFloatToTime(timeline.right)});
+                rightSliderLabel.attr({x : dest - SLIDER_W/2, text : that.hourFloatToDayTime(timeline.right)});
             }
         };
 

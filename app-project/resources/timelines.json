@@ -1,6 +1,7 @@
 [
   {
-    "hours" : 120,
+    "hours" : 72,
+    "interval" : 8,
     "events" : [
       {"time" : 12, "dose" : "4 mg"}
     ],
@@ -9,7 +10,7 @@
   },
 
   {
-    "hours" : 120,
+    "hours" : 96,
     "events" : [
       {"time" : 8, "dose" : "250 mg"},
       {"time" : 20, "dose" : "250 mg"}

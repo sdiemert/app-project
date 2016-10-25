@@ -117,7 +117,7 @@ function apiService($http, $base64){
                 events.push(new Event(resp.data.events[i].time, resp.data.events[i].dose));
             }
 
-            cb(new SliderTimeline(resp.data.hours, events, resp.data.rx, resp.data.description));
+            cb(new SliderTimeline(resp.data.hours, events, resp.data.rx, resp.data.description, resp.data.interval));
 
         }, function error(resp){
             console.log("Got error response back", resp);
