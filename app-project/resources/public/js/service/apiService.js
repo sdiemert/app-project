@@ -152,6 +152,35 @@ function apiService($http, $base64){
             cb(null);
         });
 
+    };
+
+    /**
+     *
+     * @param id {string | number} the identifier of the survey question.
+     * @param resp {string} the response to the survey question
+     * @param other {string} any "other" information provided by the user, may be null.
+     * @param uuid {string} the user's identifier
+     * @param cb {function}
+     */
+    this.sendSurveyResponse = function(id, resp, other, uuid, cb){
+
+        $http({
+            method : "POST",
+            url : "/api/"+uuid+"/survey/"+id,
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            data : {
+                answer : resp,
+                additional: other
+            }
+        }).then(function success(resp){
+            cb(null);
+        }, function error(resp){
+            cb("ERROR");
+        });
+
+
     }
 
 }

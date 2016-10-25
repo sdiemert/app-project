@@ -32,3 +32,10 @@
 td:first-child {
     padding-left:10px !important;
 }
+
+.input-error {
+    border : 1px solid #ec6f65 !important;
+}
+tr.input-error {
+    background-color: #ec6f65 !important;
+}
