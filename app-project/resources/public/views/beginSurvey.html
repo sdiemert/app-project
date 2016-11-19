@@ -10,6 +10,10 @@
 
         <button class="button-primary" onclick="go()">Proceed</button>
 
+        <br><br>
+
+        <button class="button error" onclick="exitStudy('begin-survey')">Exit Study</button>
+
 
         <!-- Scripts -->
         <script type="text/javascript">
@@ -21,6 +25,11 @@
         <script type="text/javascript">
             function go(){
                 window.location = "/#/survey/0";
+            }
+
+            function exitStudy(status){
+                var scope = angular.element($("#mainContainer")).scope();
+                scope.exitStudy(status);
             }
         </script>
     </div>

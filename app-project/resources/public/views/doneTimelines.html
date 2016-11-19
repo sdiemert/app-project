@@ -12,6 +12,10 @@
 
         <button class="button-primary" onclick="go()">Proceed</button>
 
+        <br><br>
+
+        <button class="button error" onclick="exitStudy('done-timelines')">Exit Study</button>
+
         <!-- Scripts -->
         <script type="text/javascript">
             window.onbeforeunload = function(){
@@ -23,6 +27,11 @@
             function go(){
                 window.location = "/#/survey/13";
             }
+            function exitStudy(status){
+                var scope = angular.element($("#mainContainer")).scope();
+                scope.exitStudy(status);
+            }
+
         </script>
     </div>
 </div>

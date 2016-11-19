@@ -8,8 +8,40 @@
 
     </div>
 
-    <!-- Scripts -->
+    <hr>
+
+    <div class="row">
+        <div class="twelve columns">
+            <p>If you would like to be entered into a draw for a $100 gift certificate to BestBuy please enter your email:</p>
+            <form id="email-form">
+                <input type="text" id='email' placeholder="name@domain.com" style="width:400px;"/>
+                <button class="button-primary" onclick="sendEmail();">Submit Email</button>
+            </form>
+            <div id='email-success' class="well success-well" style="display:none; width:60%;">
+                <span>Email submitted! You will be contacted if your email is drawn.</span>
+            </div>
+
+        </div>
+    </div>
+
     <script type="text/javascript">
+
+        // Mark the user as having completed the study.
+
+        var scope = angular.element($("#mainContainer")).scope();
+        //scope.doneStudy();
+
+        scope.key = null;
+        scope.consent = false;
+
+        function sendEmail(){
+            scope.sendEmail($("#email").val(), function(){
+                $("#email-form").fadeOut(100);
+                $("#email-success").fadeIn();
+            });
+        }
+
         window.onbeforeunload = null;
+
     </script>
 </div>

@@ -35,9 +35,14 @@
         if(resp === true){
 
             apiService.exitStudy($rootScope.key,status, function(err) {
-                $rootScope.key = null;
-                $rootScope.consent = false;
-                $state.go("exit");
+
+                if($rootScope.key === null || $rootScope.consent === false){
+                    $rootScope.key = null;
+                    $rootScope.consent = false;
+                    $state.go('landing');
+                }else{
+                    $state.go("exit");
+                }
             });
         }
 
@@ -49,6 +54,9 @@
 
      */
     $scope.doneStudy = function(){
+
+        $rootScope.key = null;
+        $rootScope.consent = false;
 
         apiService.doneStudy($rootScope.key, function(err) {
             $state.go("end");

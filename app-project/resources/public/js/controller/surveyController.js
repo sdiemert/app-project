@@ -11,7 +11,7 @@ function surveyController ($scope, $rootScope, $state, apiService){
     };
 
     $scope.showQuestion = function(x){
-        $("#q"+x).add($("#next-button")).add($("#back-button")).fadeIn(FADE_TIME);
+        $("#q"+x).add($("#next-button")).add($("#exit-button")).fadeIn(FADE_TIME);
     };
 
     $scope.hideAllQuestions = function(f){
@@ -22,7 +22,7 @@ function surveyController ($scope, $rootScope, $state, apiService){
         }
 
         $("#next-button").hide();
-        $("#back-button").hide();
+        $("#exit-button").hide();
 
     };
 
@@ -39,7 +39,7 @@ function surveyController ($scope, $rootScope, $state, apiService){
     $scope.fadeOutQuestion = function(x, cb){
 
         $("#q"+x).fadeOut(FADE_TIME);
-        //$("#back-button").fadeOut(FADE_TIME);
+        $("#exit-button").fadeOut(FADE_TIME);
         $("#next-button").fadeOut(FADE_TIME, cb);
 
     };
