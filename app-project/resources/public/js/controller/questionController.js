@@ -20,15 +20,17 @@ function questionController ($scope, $rootScope, $state, apiService){
 
                     // Use the SVG factory to render the timeline to the screen.
                     var fact = new SVGTimelineFactory("svg", 50, 100, 700, timeline.interval, timeline.hours);
-                    fact.renderTimeline($scope.timeline);
+                    //fact.renderTimeline($scope.timeline);
 
                     $(window).on("resize", function(){
                         fact.renderTimeline($scope.timeline);
                     });
-
+                    
                     //$("timeline-wrapper").hide();
 
                     $("#timeline-wrapper").fadeIn();
+
+                    $(window).trigger("resize");
     
                 }
 

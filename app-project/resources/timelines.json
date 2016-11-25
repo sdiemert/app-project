@@ -1,53 +1,11 @@
 [
   {
-    "hours" : 72,
-    "interval" : 8,
+    "hours" : 48,
+    "interval" : 4,
     "events" : [
       {"time" : 12, "dose" : "4 mg"}
     ],
     "description" : "Susan has been diagnosed with Deep Vein Thrombosis and must take a regular dose of warfarin to prevent clotting. ",
     "rx" : "take warfarin 4 mg once daily"
-  },
-
-  {
-    "hours" : 96,
-    "events" : [
-      {"time" : 8, "dose" : "250 mg"},
-      {"time" : 20, "dose" : "250 mg"}
-    ],
-    "description" : "John has an ear infection and must take an antibiotic.",
-    "rx" : "take Keflex 250 mg twice daily"
-  },
-
-  {
-    "hours" : 96,
-    "events" : [
-      {"time" : 8, "dose" : "500 mg"},
-      {"time" : 12, "dose" : "500 mg"},
-      {"time" : 16, "dose" : "500 mg"}
-    ],
-    "description" : "John's ear infection has gotten worse and spread to his eyes! He now takes a stronger dose of antibiotics.",
-    "rx" : "take Keflex 500 mg four times daily"
-  },
-
-  {
-    "hours" : 120,
-    "events" : [
-      {"time" : 8, "dose" : "600 mg"},
-      {"time" : 14, "dose" : "600 mg"}
-    ],
-    "description" : "Jennifer experiences chronic headaches and must take ibuprofen on a regular basis.",
-    "rx" : "take ibuprofen 600 mg three times daily"
-  },
-
-  {
-    "hours" : 120,
-    "events" : [
-      {"time" : 8, "dose" : "125 mg"},
-      {"time" : 32, "dose" : "125 mg"}
-    ],
-    "description" : "Jennifer also suffers from high blood pressure and takes a regular 'water pill'.",
-    "rx" : "take hydrochlorothazide 125 mg once per day in the morning"
   }
-
 ]
