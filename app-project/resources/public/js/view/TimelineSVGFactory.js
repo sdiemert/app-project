@@ -196,7 +196,8 @@ class SVGTimelineFactory extends SVGFactory{
 
         var that = this;
 
-        var svgLeft = $("#svg").position().left;
+        // var svgLeft = $("#svg").position().left;
+        var svgLeft = $("#svg").offset().left;
 
         var mDownFuncLeft = function(x,y,e){
             leftSliderLabel.attr({"display" : "block"});
@@ -211,6 +212,8 @@ class SVGTimelineFactory extends SVGFactory{
         };
 
         var moveFuncLeftSlider = function(dx, dy, x, y){
+
+            svgLeft = $("#svg").offset().left;
 
             var dest = x - svgLeft;
 
@@ -233,6 +236,8 @@ class SVGTimelineFactory extends SVGFactory{
         };
 
         var moveFuncRightSlider = function(dx, dy, x, y){
+
+            svgLeft = $("#svg").offset().left;
 
             var dest = x - svgLeft;
             var lsx = leftSlider.getBBox().x;
@@ -267,7 +272,7 @@ class SVGTimelineFactory extends SVGFactory{
         rightSlider.drag(moveFuncRightSlider, mDownFuncRight, mUpFuncRight);
 
         leftSlider.mouseover = function(){};
-        leftSlider.mouseout = function(){;};
+        leftSlider.mouseout = function(){};
 
     };
 
