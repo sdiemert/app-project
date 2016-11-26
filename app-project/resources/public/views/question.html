@@ -1,13 +1,22 @@
 <div class="row" >
     <div id="timeline-wrapper" class="twelve columns" style="display:none;">
 
-        <p>{{timeline.description}}</p>
+        <div class="row">
+            <div class="ten columns offset-by-one">
+                <p>{{timeline.description}}</p>
 
-        <p>The prescription is: <b>{{timeline.rx}}<b></p>
+                <p>The prescription is: <b>{{timeline.rx}}</b></p>
 
-        <p style="font-style: italic">
-            Adjust the interval slides to indicate an adherent range for the next dose of medication. Press "Done" when you are finished.
-        </p>
+                <p style="font-style: italic;">
+                    Adjust the interval slides to indicate an adherent time range for the next dose.
+                </p>
+
+                <p style="font-style: italic;">
+                    Press "Done" when you are finished.
+                </p>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="twelve columns" style="margin-left:2%;">
