@@ -3,9 +3,118 @@
     "hours" : 48,
     "interval" : 4,
     "events" : [
-      {"time" : 12, "dose" : "4 mg"}
+      {"time" : 8, "dose" : "100 mg"}
     ],
-    "description" : "Susan has been diagnosed with Deep Vein Thrombosis and must take a regular dose of warfarin to prevent clotting. ",
-    "rx" : "take warfarin 4 mg once daily"
+    "description" : "Your patient has symptoms consisted with a urinary tract infection. You prescribe an antibiotic.",
+    "rx" : "Take Nitrofurantoin 100 mg by mouth twice daily for 5 days"
+  },
+
+  {
+    "hours" : 48,
+    "interval" : 4,
+    "events" : [
+      {"time" : 10, "dose" : "2.5 mg"}
+    ],
+    "description" : "Your patient has high blood pressure that has failed to be controlled by lifestyle modification and you prescribe an antihypertensive.",
+    "rx" : "Take Ramipril 2.5 mg by mouth once daily"
+  },
+
+  {
+    "hours" : 48,
+    "interval" : 4,
+    "events" : [
+      {"time" : 6, "dose" : "4 mg"},
+      {"time" : 10, "dose" : "4 mg"},
+      {"time" : 14, "dose" : "4 mg"}
+    ],
+    "description" : "Your patient has fractured a bone in a motor vehicle collision and you decide to give a small supply of opioids for his acute pain.",
+    "rx" : "Take Hydromorphone 4 mg orally every 4 hours as needed for 5 days"
+  },
+
+  {
+    "hours" : 72,
+    "interval" : 12,
+    "events" : [
+      {"time" : 9, "dose" : "1 tab"}
+    ],
+    "description" : "Your patient is regularly taking an oral contraceptive for birth control.",
+    "rx" : "Marvelon, take 1 tablet by mouth once daily"
+  },
+
+  {
+    "hours" : 72,
+    "interval" : 12,
+    "events" : [
+      {"time" : 22, "dose" : "10 units"}
+    ],
+    "description" : "Your patient has type 2 diabetes is requiring to start insulin in addition to their current oral anti-glycemic regimen for glucose management.",
+    "rx" : "Take Glargine 10 units subcutaneously at bedtime"
+  },
+
+  {
+    "hours" : 72,
+    "interval" : 12,
+    "events" : [
+      {"time" : 12, "dose" : "400 mg"}
+    ],
+    "description" : "Your patient went to emergency with an acute bacterial sinusitis and was prescribed an antibiotic.",
+    "rx" : "Moxifloxicin 400 mg by mouth every twenty four hours for 10 days"
+  },
+
+  {
+    "hours" : 36,
+    "interval" : 4,
+    "events" : [
+      {"time" : 8, "dose" : "500 mg"},
+      {"time" : 12, "dose" : "500 mg"}
+    ],
+    "description" : "Your patient has MSSA cellulitis, you prescribe an antibiotic.",
+    "rx" : "Cephalexin 500 mg by mouth four times a day for 7 days"
+  },
+
+  {
+    "hours" : 72,
+    "interval" : 12,
+    "events" : [
+      {"time" : 9, "dose" : "7 mg"}
+    ],
+    "description" : "Patient had a history of recurrent DVTs and a previous PE (INR in therapeutic range).",
+    "rx" : "Warfarin 7 mg by mouth once daily"
+  },
+
+  {
+    "hours" : 48,
+    "interval" : 8,
+    "events" : [
+      {"time" : 9, "dose" : "500 mg"},
+      {"time" : 17, "dose" : "500 mg"}
+    ],
+    "description" : "Your patient has bacterial pharyngitis and a positive culture, you prescribe an antibiotic.",
+    "rx" : "Penicillin V 500 mg by mouth three times a day for 10 days"
+  },
+
+  {
+    "hours" : 48,
+    "interval" : 4,
+    "events" : [
+      {"time" : 8, "dose" : "9 mg"},
+      {"time" : 14, "dose" : "4 mg"}
+
+    ],
+    "description" : "Your patient has chronic pain related to her end-stage cancer and is on chronic opioids. They are on a long-acting opioid plus a breakthrough as needed. For this question, please indicate when to take the next dose of long acting opioid.",
+    "rx" : "Take Hydromorphone Contin 9 mg orally twice daily and take Hydromorphone 4 mg orally every 4 hours as needed"
+  },
+
+  {
+    "hours" : 48,
+    "interval" : 4,
+    "events" : [
+      {"time" : 8, "dose" : "9 mg"},
+      {"time" : 14, "dose" : "4 mg"},
+      {"time" : 20, "dose" : "9 mg"}
+
+    ],
+    "description" : "Your patient has chronic pain related to her end-stage cancer and is on chronic opioids. They are on a long-acting opioid plus a breakthrough as needed. For this question, please indicate when to take the next dose breakthrough opioid",
+    "rx" : "Take Hydromorphone Contin 9 mg orally twice daily and take Hydromorphone 4 mg orally every 4 hours as needed"
   }
 ]
