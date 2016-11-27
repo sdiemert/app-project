@@ -31,12 +31,16 @@
             // Mark the user as having completed the study.
 
             var scope = angular.element($("#mainContainer")).scope();
-            scope.doneStudy();
+            scope.doneStudy(); // they are done the study
 
             function sendEmail(){
                     scope.sendEmail($("#email").val(), function(){
                         $("#email-form").fadeOut(100);
                         $("#email-success").fadeIn();
+
+                        scope.key = null;
+                        scope.consent = false;
+
                     });
             }
 

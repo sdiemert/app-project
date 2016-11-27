@@ -55,8 +55,8 @@
      */
     $scope.doneStudy = function(){
 
-        $rootScope.key = null;
-        $rootScope.consent = false;
+        //$rootScope.key = null;
+        //$rootScope.consent = false;
 
         apiService.doneStudy($rootScope.key, function(err) {
             $state.go("end");
