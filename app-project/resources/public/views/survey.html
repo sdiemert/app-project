@@ -81,7 +81,7 @@
                     <label for="q5-input">In your practice to what <span style="font-style: italic">degree</span> is medication adherence a concern?</label>
                     <select ng-model="response" class="u-full-width" id="q5-input">
                         <option value="null-answer"></option>
-                        <option value="not">Not a concern for any patients</option>
+                        <option value="not">Not a concern for any patients (0%)</option>
                         <option value="minority">A concern for a <span style="font-style: italic">minority</span> of patients</option>
                         <option value="half">A concern for a <span style="font-style: italic">half</span> of patients</option>
                         <option value="majority">A concern for a <span style="font-style: italic">majority</span> of patients</option>
@@ -159,107 +159,13 @@
                 </form>
             </div>
         </div>
+
+        <br>
+
         <div class="row" id="q11" style="display:none;">
             <div class="twelve columns">
                 <form>
                     <label for="q11-input">
-                        What is the <em>likelihood</em> for a patient to be non-adherent to the following medications ?
-                    </label>
-
-                    <table>
-                        <thead>
-                            <th></th>
-                            <th class="col-spacer">5 (most likely)</th>
-                            <th class="col-spacer">4</th>
-                            <th class="col-spacer">3</th>
-                            <th class="col-spacer">2</th>
-                            <th class="col-spacer">1 (least likely)</th>
-                        </thead>
-                        <tbody>
-                            <tr id="q11-1">
-                                <td>Short course of systemic (oral) antibiotics</td>
-                                <td> <input type="radio" name="q11-1" value="5" /></td>
-                                <td> <input type="radio" name="q11-1" value="4" /></td>
-                                <td> <input type="radio" name="q11-1" value="3" /></td>
-                                <td> <input type="radio" name="q11-1" value="2" /></td>
-                                <td> <input type="radio" name="q11-1" value="1" /></td>
-                            </tr>
-
-                            <tr id="q11-2" class="row-stripe">
-                                <td>Short course of NSAIDs for sprained ankle</td>
-                                <td> <input type="radio" name="q11-2" value="5" /></td>
-                                <td> <input type="radio" name="q11-2" value="4" /></td>
-                                <td> <input type="radio" name="q11-2" value="3" /></td>
-                                <td> <input type="radio" name="q11-2" value="2" /></td>
-                                <td> <input type="radio" name="q11-2" value="1" /></td>
-                            </tr>
-
-                            <tr id="q11-3">
-                                <td>Long-term NSAID for OA</td>
-                                <td> <input type="radio" name="q11-3" value="5" /></td>
-                                <td> <input type="radio" name="q11-3" value="4" /></td>
-                                <td> <input type="radio" name="q11-3" value="3" /></td>
-                                <td> <input type="radio" name="q11-3" value="2" /></td>
-                                <td> <input type="radio" name="q11-3" value="1" /></td>
-                            </tr>
-
-                            <tr id="q11-4" class="row-stripe">
-                                <td>Opioids for chronic back pain</td>
-                                <td> <input type="radio" name="q11-4" value="5" /></td>
-                                <td> <input type="radio" name="q11-4" value="4" /></td>
-                                <td> <input type="radio" name="q11-4" value="3" /></td>
-                                <td> <input type="radio" name="q11-4" value="2" /></td>
-                                <td> <input type="radio" name="q11-4" value="1" /></td>
-                            </tr>
-
-                            <tr id="q11-5">
-                                <td>SSRIs</td>
-                                <td> <input type="radio" name="q11-5" value="5" /></td>
-                                <td> <input type="radio" name="q11-5" value="4" /></td>
-                                <td> <input type="radio" name="q11-5" value="3" /></td>
-                                <td> <input type="radio" name="q11-5" value="2" /></td>
-                                <td> <input type="radio" name="q11-5" value="1" /></td>
-                            </tr>
-
-                            <tr id="q11-6" class="row-stripe">
-                                <td>Long-term benzodiazepines</td>
-                                <td> <input type="radio" name="q11-6" value="5" /></td>
-                                <td> <input type="radio" name="q11-6" value="4" /></td>
-                                <td> <input type="radio" name="q11-6" value="3" /></td>
-                                <td> <input type="radio" name="q11-6" value="2" /></td>
-                                <td> <input type="radio" name="q11-6" value="1" /></td>
-                            </tr>
-
-                            <tr id="q11-7">
-                                <td>Long-term beta-blocker for hypertension</td>
-                                <td> <input type="radio" name="q11-7" value="5" /></td>
-                                <td> <input type="radio" name="q11-7" value="4" /></td>
-                                <td> <input type="radio" name="q11-7" value="3" /></td>
-                                <td> <input type="radio" name="q11-7" value="2" /></td>
-                                <td> <input type="radio" name="q11-7" value="1" /></td>
-                            </tr>
-
-                            <tr id="q11-8" class="row-stripe">
-                                <td>Oral contraception (Progestogens and Estrogens in combination)</td>
-                                <td> <input type="radio" name="q11-8" value="5" /></td>
-                                <td> <input type="radio" name="q11-8" value="4" /></td>
-                                <td> <input type="radio" name="q11-8" value="3" /></td>
-                                <td> <input type="radio" name="q11-8" value="2" /></td>
-                                <td> <input type="radio" name="q11-8" value="1" /></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </form>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="row" id="q12" style="display:none;">
-            <div class="twelve columns">
-                <form>
-                    <label for="q12-input">
                         What is the <em>potential risk of harm</em> if a patient is non-adherent to the following medications ?
                     </label>
 
@@ -275,6 +181,103 @@
                         <tbody>
                         <tr id="q12-1">
                             <td>Short course of systemic (oral) antibiotics</td>
+                            <td> <input type="radio" name="q11-1" value="5" /></td>
+                            <td> <input type="radio" name="q11-1" value="4" /></td>
+                            <td> <input type="radio" name="q11-1" value="3" /></td>
+                            <td> <input type="radio" name="q11-1" value="2" /></td>
+                            <td> <input type="radio" name="q11-1" value="1" /></td>
+                        </tr>
+
+                        <tr id="q12-2" class="row-stripe">
+                            <td>Short course of NSAIDs for sprained ankle</td>
+                            <td> <input type="radio" name="q11-2" value="5" /></td>
+                            <td> <input type="radio" name="q11-2" value="4" /></td>
+                            <td> <input type="radio" name="q11-2" value="3" /></td>
+                            <td> <input type="radio" name="q11-2" value="2" /></td>
+                            <td> <input type="radio" name="q11-2" value="1" /></td>
+                        </tr>
+
+                        <tr id="q12-3">
+                            <td>Long-term NSAID for OA</td>
+                            <td> <input type="radio" name="q11-3" value="5" /></td>
+                            <td> <input type="radio" name="q11-3" value="4" /></td>
+                            <td> <input type="radio" name="q11-3" value="3" /></td>
+                            <td> <input type="radio" name="q11-3" value="2" /></td>
+                            <td> <input type="radio" name="q11-3" value="1" /></td>
+                        </tr>
+
+                        <tr id="q12-4" class="row-stripe">
+                            <td>Opioids for chronic back pain</td>
+                            <td> <input type="radio" name="q11-4" value="5" /></td>
+                            <td> <input type="radio" name="q11-4" value="4" /></td>
+                            <td> <input type="radio" name="q11-4" value="3" /></td>
+                            <td> <input type="radio" name="q11-4" value="2" /></td>
+                            <td> <input type="radio" name="q11-4" value="1" /></td>
+                        </tr>
+
+                        <tr id="q12-5">
+                            <td>SSRIs</td>
+                            <td> <input type="radio" name="q11-5" value="5" /></td>
+                            <td> <input type="radio" name="q11-5" value="4" /></td>
+                            <td> <input type="radio" name="q11-5" value="3" /></td>
+                            <td> <input type="radio" name="q11-5" value="2" /></td>
+                            <td> <input type="radio" name="q11-5" value="1" /></td>
+                        </tr>
+
+                        <tr id="q12-6" class="row-stripe">
+                            <td>Long-term benzodiazepines</td>
+                            <td> <input type="radio" name="q11-6" value="5" /></td>
+                            <td> <input type="radio" name="q11-6" value="4" /></td>
+                            <td> <input type="radio" name="q11-6" value="3" /></td>
+                            <td> <input type="radio" name="q11-6" value="2" /></td>
+                            <td> <input type="radio" name="q11-6" value="1" /></td>
+                        </tr>
+
+                        <tr id="q12-7">
+                            <td>Long-term beta-blocker for hypertension</td>
+                            <td> <input type="radio" name="q11-7" value="5" /></td>
+                            <td> <input type="radio" name="q11-7" value="4" /></td>
+                            <td> <input type="radio" name="q11-7" value="3" /></td>
+                             <td> <input type="radio" name="q11-7" value="2" /></td>
+                            <td> <input type="radio" name="q11-7" value="1" /></td>
+                        </tr>
+
+                        <tr id="q12-8" class="row-stripe">
+                            <td>Oral contraception (Progestogens and Estrogens in combination)</td>
+                            <td> <input type="radio" name="q11-8" value="5" /></td>
+                            <td> <input type="radio" name="q11-8" value="4" /></td>
+                            <td> <input type="radio" name="q11-8" value="3" /></td>
+                            <td> <input type="radio" name="q11-8" value="2" /></td>
+                            <td> <input type="radio" name="q11-8" value="1" /></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row" id="q12" style="display:none;">
+            <div class="twelve columns">
+                <form>
+                    <label for="q12-input">
+                        What is the <em>likelihood</em> for a patient to be non-adherent to the following medications ?
+                    </label>
+
+                    <table>
+                        <thead>
+                        <th></th>
+                        <th class="col-spacer">5 (most likely)</th>
+                        <th class="col-spacer">4</th>
+                        <th class="col-spacer">3</th>
+                        <th class="col-spacer">2</th>
+                        <th class="col-spacer">1 (least likely)</th>
+                        </thead>
+                        <tbody>
+                        <tr id="q11-1">
+                            <td>Short course of systemic (oral) antibiotics</td>
                             <td> <input type="radio" name="q12-1" value="5" /></td>
                             <td> <input type="radio" name="q12-1" value="4" /></td>
                             <td> <input type="radio" name="q12-1" value="3" /></td>
@@ -282,7 +285,7 @@
                             <td> <input type="radio" name="q12-1" value="1" /></td>
                         </tr>
 
-                        <tr id="q12-2" class="row-stripe">
+                        <tr id="q11-2" class="row-stripe">
                             <td>Short course of NSAIDs for sprained ankle</td>
                             <td> <input type="radio" name="q12-2" value="5" /></td>
                             <td> <input type="radio" name="q12-2" value="4" /></td>
@@ -291,7 +294,7 @@
                             <td> <input type="radio" name="q12-2" value="1" /></td>
                         </tr>
 
-                        <tr id="q12-3">
+                        <tr id="q11-3">
                             <td>Long-term NSAID for OA</td>
                             <td> <input type="radio" name="q12-3" value="5" /></td>
                             <td> <input type="radio" name="q12-3" value="4" /></td>
@@ -300,7 +303,7 @@
                             <td> <input type="radio" name="q12-3" value="1" /></td>
                         </tr>
 
-                        <tr id="q12-4" class="row-stripe">
+                        <tr id="q11-4" class="row-stripe">
                             <td>Opioids for chronic back pain</td>
                             <td> <input type="radio" name="q12-4" value="5" /></td>
                             <td> <input type="radio" name="q12-4" value="4" /></td>
@@ -309,7 +312,7 @@
                             <td> <input type="radio" name="q12-4" value="1" /></td>
                         </tr>
 
-                        <tr id="q12-5">
+                        <tr id="q11-5">
                             <td>SSRIs</td>
                             <td> <input type="radio" name="q12-5" value="5" /></td>
                             <td> <input type="radio" name="q12-5" value="4" /></td>
@@ -318,7 +321,7 @@
                             <td> <input type="radio" name="q12-5" value="1" /></td>
                         </tr>
 
-                        <tr id="q12-6" class="row-stripe">
+                        <tr id="q11-6" class="row-stripe">
                             <td>Long-term benzodiazepines</td>
                             <td> <input type="radio" name="q12-6" value="5" /></td>
                             <td> <input type="radio" name="q12-6" value="4" /></td>
@@ -327,16 +330,16 @@
                             <td> <input type="radio" name="q12-6" value="1" /></td>
                         </tr>
 
-                        <tr id="q12-7">
+                        <tr id="q11-7">
                             <td>Long-term beta-blocker for hypertension</td>
                             <td> <input type="radio" name="q12-7" value="5" /></td>
                             <td> <input type="radio" name="q12-7" value="4" /></td>
                             <td> <input type="radio" name="q12-7" value="3" /></td>
-                             <td> <input type="radio" name="q12-7" value="2" /></td>
+                            <td> <input type="radio" name="q12-7" value="2" /></td>
                             <td> <input type="radio" name="q12-7" value="1" /></td>
                         </tr>
 
-                        <tr id="q12-8" class="row-stripe">
+                        <tr id="q11-8" class="row-stripe">
                             <td>Oral contraception (Progestogens and Estrogens in combination)</td>
                             <td> <input type="radio" name="q12-8" value="5" /></td>
                             <td> <input type="radio" name="q12-8" value="4" /></td>
@@ -350,6 +353,7 @@
                 </form>
             </div>
         </div>
+
 
         <div class="row" id="q13" style="display:none;">
             <div class="eight columns offset-by-two columns">

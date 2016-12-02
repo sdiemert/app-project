@@ -31,6 +31,29 @@ function questionController ($scope, $rootScope, $state, apiService){
                     $("#timeline-wrapper").fadeIn();
 
                     $(window).trigger("resize");
+
+                    if($scope.questionNumber == 9 || $scope.questionNumber == 10){
+
+                        var s = timeline.rx;
+                        // Take Hydromorphone Contin 9 mg orally twice daily and take Hydromorphone 4 mg orally every 4 hours as needed
+
+                        var s0 = timeline.rx.substring(0,50);
+                        var s1 = timeline.rx.substring(54);
+
+                        $("#rx-span").css("font-weight", "normal");
+
+                        if($scope.questionNumber == 9){
+                            var h = "<span style='font-weight:bold'>"+s0+"</span>"+" "+s1;
+                            $("#rx-span").html(h)
+                        }else{
+                            var h = s0+" <span style='font-weight:bold'>"+s1+"</span>";
+
+                            $("#rx-span").html(h)
+                        }
+
+                    }else{
+                        $("#rx-span").css("font-weight", "bold").html(timeline.rx);
+                    }
     
                 }
 
