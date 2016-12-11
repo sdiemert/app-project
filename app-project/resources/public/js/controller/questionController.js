@@ -1,3 +1,4 @@
+"use strict";
 function questionController ($scope, $rootScope, $state, apiService){
 
     var params = $state.params;
